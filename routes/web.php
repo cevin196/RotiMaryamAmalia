@@ -1,0 +1,49 @@
+<?php
+
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MenuController;
+use App\Http\Controllers\PesananController;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/', [HomeController::class, 'index'])->name('dashboard');
+Route::get('/tentang-kami', [HomeController::class, 'tentangKami'])->name('tentang-kami');
+Auth::routes();
+
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+/*------------------------------------------
+--------------------------------------------
+All Normal Users Routes List
+--------------------------------------------
+--------------------------------------------*/
+Route::middleware(['auth', 'user-access:user'])->group(function () {
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::get('/belanja', [HomeController::class, 'belanja'])->name('belanja');
+});
+
+/*------------------------------------------
+--------------------------------------------
+All pegawai Routes List
+--------------------------------------------
+--------------------------------------------*/
+// Route::middleware(['auth', 'user-access:pegawai'])->group(function () {
+//     Route::get('/pegawai/home', [HomeController::class, 'pegawaiHome'])->name('pegawai.home');
+// });
+
+/*------------------------------------------
+--------------------------------------------
+All Admin Routes List
+--------------------------------------------
+--------------------------------------------*/
+Route::middleware(['auth', 'user-access:admin'])->group(function () {
+
+    Route::get('/admin/home', [HomeController::class, 'adminHome'])->name('admin.home');
+    Route::resource('/admin/menu', MenuController::class);
+    Route::resource('/admin/pesanan', PesananController::class);
+});
