@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\PesananController;
@@ -25,6 +26,10 @@ All Normal Users Routes List
 Route::middleware(['auth', 'user-access:user'])->group(function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
     Route::get('/belanja', [HomeController::class, 'belanja'])->name('belanja');
+    Route::get('/keranjang', [HomeController::class, 'keranjang'])->name('keranjang');
+    Route::post('/cart', [CartController::class, 'store'])->name('cart.store');
+    Route::get('/checkout-index', [HomeController::class, 'checkoutIndex'])->name('checkout.index');
+    Route::post('/checkout-post', [HomeController::class, 'checkoutPost'])->name('checkout.post');
 });
 
 /*------------------------------------------

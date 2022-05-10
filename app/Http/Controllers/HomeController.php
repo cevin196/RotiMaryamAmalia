@@ -4,9 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Menu;
 use Illuminate\Http\Request;
+use Gloudemans\Shoppingcart\Facades\Cart;
+use Livewire\WithPagination;
 
 class HomeController extends Controller
 {
+
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -25,12 +29,22 @@ class HomeController extends Controller
 
     public function belanja()
     {
-        // dd(request());
-        if (request('search') == null) {
-            $menus = Menu::paginate(8);
-        } else {
-            $menus = Menu::where('nama', 'like', '%' . request('search') . '%')->paginate(8);
-        }
-        return view('belanja', compact('menus'));
+
+        return view('belanja');
+    }
+
+    public function keranjang()
+    {
+        return view('keranjang');
+    }
+
+    public function checkoutIndex()
+    {
+        $cart = Cart::content();
+        return view('checkout', compact('cart'));
+    }
+
+    public function checkoutPost()
+    {
     }
 }

@@ -24,12 +24,19 @@
                             <div class="header__top__right__links">                                
                                 {{-- <a href="#"><img src="{{('templateUser/img/icon/heart.png')}}" alt=""></a> --}}
                             </div>
-                            <div class="header__top__right__cart">
+                            @if (Auth::check())
+
+                                @livewire('cart-total')
+
+                            @endif
+                            {{-- <div class="header__top__right__cart">
                                 @if (Auth::check())
                                 <a href="#"><img src="{{('templateUser/img/icon/cart.png')}}" alt=""> <span>0</span></a>
-                                <div class="cart__price">Cart: <span>Rp. 0.00</span></div>
+
+                                @livewire('cart-total')
+                                
                                 @endif
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>

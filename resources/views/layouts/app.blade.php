@@ -17,9 +17,13 @@
 
     <!-- Css Styles -->
     @include('layouts.links')
+
+    @livewireStyles
+
 </head>
 
 <body>
+    @include('includes.toast')
     {{-- <div id="preloder">
         <div class="loader"></div>
     </div> --}}
@@ -76,6 +80,16 @@
 
 <!-- Js Plugins -->
 @include('layouts.scripts')
+
+@if (\Session::has('success'))
+    <script>
+        $( document ).ready(function() {
+            $('.toast').toast('show');
+        });
+    </script>
+@endif
+
+@livewireScripts
 </body>
 
 </html>
