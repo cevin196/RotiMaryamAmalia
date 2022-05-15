@@ -1,6 +1,11 @@
 @extends('layouts.app')
-
 @include('includes.formater')
+
+@section('links')
+<script type="text/javascript"
+src="https://app.sandbox.midtrans.com/snap/snap.js"
+data-client-key="SET_YOUR_CLIENT_KEY_HERE"></script>
+@endsection
 
 @section('content')
     
@@ -92,14 +97,26 @@
                                         <span class="checkmark"></span>
                                     </label>
                                 </div>
-                                <button type="submit" class="site-btn">Pesan</button>
                             </div>
                         </div>
                     </div>
                 </form>
+                <button id="pay-button" class="site-btn">Pesan</button>
             </div>
         </div>
     </section>
     <!-- Checkout Section End -->
 
+@endsection
+
+@section('scripts')
+<script type="text/javascript">
+    // For example trigger on button clicked, or any time you need
+    var payButton = document.getElementById('pay-button');
+    payButton.addEventListener('click', function () {
+      // Trigger snap popup. @TODO: Replace TRANSACTION_TOKEN_HERE with your transaction token
+      window.snap.pay('{{$snapToken}}');
+      // customer will be redirected after completing payment pop-up
+    });
+  </script>
 @endsection
