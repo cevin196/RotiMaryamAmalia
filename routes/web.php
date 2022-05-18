@@ -1,9 +1,9 @@
 <?php
 
-use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\PesananController;
+use App\Models\Menu;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -11,7 +11,11 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/', [HomeController::class, 'index'])->name('dashboard');
+// Route::get('/', [HomeController::class, 'index'])->name('dashboard');
+Route::get('/', function () {
+    $menus = Menu::all();
+    return view('dashboard', compact('menus'));
+})->name('dashboard');
 Route::get('/tentang-kami', [HomeController::class, 'tentangKami'])->name('tentang-kami');
 Auth::routes();
 
@@ -24,22 +28,17 @@ All Normal Users Routes List
 --------------------------------------------
 --------------------------------------------*/
 Route::middleware(['auth', 'user-access:user'])->group(function () {
-    Route::get('/home', [HomeController::class, 'index'])->name('home');
+    // Route::get('/home', [HomeController::class, 'index'])->name('home');
     Route::get('/belanja', [HomeController::class, 'belanja'])->name('belanja');
     Route::get('/keranjang', [HomeController::class, 'keranjang'])->name('keranjang');
-    Route::post('/cart', [CartController::class, 'store'])->name('cart.store');
+    // Route::post('/cart', [CartController::class, 'store'])->name('cart.store');
     Route::get('/checkout-index', [HomeController::class, 'checkoutIndex'])->name('checkout.index');
     Route::post('/checkout-post', [HomeController::class, 'checkoutPost'])->name('checkout.post');
+    Route::get('/list-pesanan', [HomeController::class, 'listPesanan'])->name('list-pesanan');
+    // Route::get('user/pesanan/', [HomeController::class, 'pesanan'])->name('user-pesanan');
+    Route::get('pesanan/{id}', [HomeController::class, 'pesanan'])->name('pesanan');
+    Route::post('pesanan', [HomeController::class, 'pesananStore'])->name('user.pesanan.store');
 });
-
-/*------------------------------------------
---------------------------------------------
-All pegawai Routes List
---------------------------------------------
---------------------------------------------*/
-// Route::middleware(['auth', 'user-access:pegawai'])->group(function () {
-//     Route::get('/pegawai/home', [HomeController::class, 'pegawaiHome'])->name('pegawai.home');
-// });
 
 /*------------------------------------------
 --------------------------------------------

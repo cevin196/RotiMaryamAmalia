@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pesanan;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class PesananController extends Controller
 {
     public function index()
     {
-        $pesanans = Pesanan::where('status', '0')->get();
+        $pesanans = Pesanan::whereMonth('created_at', Carbon::now()->month)->get();
         return view('admin.pesanan.index', compact('pesanans'));
     }
 

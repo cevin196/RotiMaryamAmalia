@@ -27,7 +27,7 @@
                             background-size: cover;
                             background-position: top center;" wire:key="lang{{$loop->index}}">
                             <div class="product__label">
-                                <span>{{$menu->kategori}}</span>
+                                <span>Roti Maryam</span>
                             </div>
                         </div>
                         <div class="product__item__text">

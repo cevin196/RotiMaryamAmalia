@@ -14,7 +14,6 @@ return new class extends Migration
             $table->bigInteger('harga');
             $table->text('gambar')->nullable();
             $table->text('deskripsi')->nullable();
-            $table->string('kategori')->default('Roti Canai');
             $table->boolean('status')->default(1);
             $table->timestamps();
         });

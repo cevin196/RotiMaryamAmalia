@@ -35,11 +35,48 @@ class DatabaseSeeder extends Seeder
         }
         User::factory(15)->create();
 
-        Menu::factory(10)->create();
+        // Menu::factory(10)->create();
+        $menus = [
+            [
+                'nama' => 'Roti Maryam Coklat',
+                'harga' => rand(10000, 20000),
+                'gambar' => 'roti1.jpg',
+            ],
+            [
+                'nama' => 'Roti Maryam Madu',
+                'harga' => rand(10000, 20000),
+                'gambar' => 'roti2.jpg',
+            ],
+            [
+                'nama' => 'Roti Maryam Keju',
+                'harga' => rand(10000, 20000),
+                'gambar' => 'roti3.jpg',
+            ],
+            [
+                'nama' => 'Roti Maryam Greentea',
+                'harga' => rand(10000, 20000),
+                'gambar' => 'roti4.jpg',
+            ],
+            [
+                'nama' => 'Roti Maryam Stroberi',
+                'harga' => rand(10000, 20000),
+                'gambar' => 'roti5.jpg',
+            ],
+            [
+                'nama' => 'Roti Maryam Kurma',
+                'harga' => rand(10000, 20000),
+                'gambar' => 'roti6.jpg',
+            ],
+        ];
+
+        foreach ($menus as $key => $menu) {
+            Menu::create($menu);
+        }
+
         Pesanan::factory(5)->create();
 
         foreach (Pesanan::all() as $pesanan) {
-            $menus = Menu::inRandomOrder()->take(rand(1, 3))->pluck('id');
+            $menus = Menu::inRandomOrder()->take(rand(3, 5))->pluck('id');
             foreach ($menus as $menu) {
                 $pesanan->menus()->attach($menu, ['qty' => rand(1, 15)]);
             }

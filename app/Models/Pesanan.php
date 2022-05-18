@@ -10,14 +10,14 @@ class Pesanan extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'tanggal', 'total', 'status'];
+    protected $fillable = ['user_id', 'tanggal', 'total', 'status', 'pesanan', 'nama', 'alamat', 'telepon', 'email', 'nomor_pesanan'];
 
-    protected function status(): Attribute
-    {
-        return new Attribute(
-            get: fn ($value) =>  ["Checkout", "Selesai"][$value],
-        );
-    }
+    // protected function status(): Attribute
+    // {
+    //     return new Attribute(
+    //         get: fn ($value) =>  ["pending", "Selesai", "Batal"][$value],
+    //     );
+    // }
 
     public function user()
     {

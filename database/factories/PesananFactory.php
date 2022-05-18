@@ -10,9 +10,18 @@ class PesananFactory extends Factory
 {
     public function definition()
     {
+        $user = User::all()->random();
         return [
-            'user_id' => User::all()->random(),
+            'user_id' => $user,
             'tanggal' => Carbon::now(),
+            'total' => rand(15000, 150000),
+            'nomor_pesanan' => $this->faker->numberBetween($min = 1000000, $max = 9000000),
+
+            'nama' => $user->name,
+            'telepon' => $user->telepon,
+            'alamat' => $this->faker->address(),
+            'email' => $user->email,
+
         ];
     }
 }

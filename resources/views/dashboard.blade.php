@@ -10,8 +10,8 @@
                 <div class="row d-flex justify-content-center">
                     <div class="col-lg-8">
                         <div class="hero__text">
-                            <h2>Making your life sweeter one bite at a time!</h2>
-                            <a href="#" class="primary-btn">Our cakes</a>
+                            <h2>Membuat hidup lebih manis dalam satu gigitan!</h2>
+                            <a href="#" class="primary-btn">Menu Kami</a>
                         </div>
                     </div>
                 </div>
@@ -22,8 +22,8 @@
                 <div class="row d-flex justify-content-center">
                     <div class="col-lg-8">
                         <div class="hero__text">
-                            <h2>Making your life sweeter one bite at a time!</h2>
-                            <a href="#" class="primary-btn">Our cakes</a>
+                            <h2>Manjakan lidahmu dengan kelezatan yang istimewa!</h2>
+                            <a href="#" class="primary-btn">Menu Kami</a>
                         </div>
                     </div>
                 </div>
@@ -38,31 +38,30 @@
                 <div class="col-lg-6 col-md-6">
                     <div class="about__text">
                         <div class="section-title">
-                            <span>About Cake shop</span>
-                            <h2>Cakes and bakes from the house of Queens!</h2>
+                            <span>Tentang toko kami</span>
+                            <h2>Roti yang dibuat dengan sepenuh hati!</h2>
                         </div>
-                        <p>The "Cake Shop" is a Jordanian Brand that started as a small family business. The owners are
-                        Dr. Iyad Sultan and Dr. Sereen Sharabati, supported by a staff of 80 employees.</p>
+                        <p>Roti Maryam Amalia adalah toko penyedia roti maryam di kota Yogyakarta dan sudah berdiri sejak tahun 2010 untuk menyediakan roti maryam berkualitas pada setiap konsumen.</p>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6">
                     <div class="about__bar">
                         <div class="about__bar__item">
-                            <p>Cake design</p>
+                            <p>Rasa Roti</p>
                             <div id="bar1" class="barfiller">
                                 <div class="tipWrap"><span class="tip"></span></div>
                                 <span class="fill" data-percentage="95"></span>
                             </div>
                         </div>
                         <div class="about__bar__item">
-                            <p>Cake Class</p>
+                            <p>Tampilan Roti</p>
                             <div id="bar2" class="barfiller">
                                 <div class="tipWrap"><span class="tip"></span></div>
                                 <span class="fill" data-percentage="80"></span>
                             </div>
                         </div>
                         <div class="about__bar__item">
-                            <p>Cake Recipes</p>
+                            <p>Bahan roti</p>
                             <div id="bar3" class="barfiller">
                                 <div class="tipWrap"><span class="tip"></span></div>
                                 <span class="fill" data-percentage="90"></span>
@@ -110,8 +109,8 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="section-title">
-                        <span>Testimonial</span>
-                        <h2>Our client say</h2>
+                        <span>Testimoni</span>
+                        <h2>Kata Pelanggan Kami</h2>
                     </div>
                 </div>
             </div>
@@ -124,8 +123,8 @@
                                     <img src="{{asset('templateUser/img/testimonial/ta-1.jpg')}}" alt="">
                                 </div>
                                 <div class="testimonial__author__text">
-                                    <h5>Kerry D.Silva</h5>
-                                    <span>New york</span>
+                                    <h5>Michelle Agustin</h5>
+                                    <span>Balikpapan</span>
                                 </div>
                             </div>
                             <div class="rating">
@@ -135,8 +134,7 @@
                                 <span class="icon_star"></span>
                                 <span class="icon_star-half_alt"></span>
                             </div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                            ut labore et dolore magna aliqua viverra lacus vel facilisis.</p>
+                            <p>Rasa dari rotinya sangat khas dan berbeda dari yang lain. Sungguh nikmat!</p>
                         </div>
                     </div>
                     <div class="col-lg-6">
@@ -146,8 +144,8 @@
                                     <img src="{{asset('templateUser/img/testimonial/ta-2.jpg')}}" alt="">
                                 </div>
                                 <div class="testimonial__author__text">
-                                    <h5>Kerry D.Silva</h5>
-                                    <span>New york</span>
+                                    <h5>Irene Celly</h5>
+                                    <span>Yogyakarta</span>
                                 </div>
                             </div>
                             <div class="rating">
@@ -157,8 +155,7 @@
                                 <span class="icon_star"></span>
                                 <span class="icon_star-half_alt"></span>
                             </div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                            ut labore et dolore magna aliqua viverra lacus vel facilisis.</p>
+                            <p>Semua varian rasa sudah saya coba, baik manis ataupun gurih semuanya pas di lidah. Benar-benar dibuat dengan sepenuh hati.</p>
                         </div>
                     </div>
                     <div class="col-lg-6">
@@ -262,8 +259,8 @@
                 <div class="col-lg-4 p-0">
                     <div class="instagram__text">
                         <div class="section-title">
-                            <span>Follow us on instagram</span>
-                            <h2>Sweet moments are saved as memories.</h2>
+                            <span>Follow kami di Instragram</span>
+                            <h2>Ayo berbagi kenangan manis bersama.</h2>
                         </div>
                         <a href="https://www.instagram.com/roti.maryam.id/"><h5><i class="fa fa-instagram"></i> @roti.maryam.id</h5></a>
                     </div>
