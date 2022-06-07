@@ -12,6 +12,7 @@ return new class extends Migration
             $table->foreignId('menu_id')->constrained();
             $table->foreignId('pesanan_id')->constrained();
             $table->integer('qty');
+            $table->bigInteger('harga')->unsigned();
         });
     }
 

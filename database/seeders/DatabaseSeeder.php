@@ -78,7 +78,7 @@ class DatabaseSeeder extends Seeder
         foreach (Pesanan::all() as $pesanan) {
             $menus = Menu::inRandomOrder()->take(rand(3, 5))->pluck('id');
             foreach ($menus as $menu) {
-                $pesanan->menus()->attach($menu, ['qty' => rand(1, 15)]);
+                $pesanan->menus()->attach($menu, ['qty' => rand(1, 15), 'harga' => rand(10000, 20000)]);
             }
         }
     }

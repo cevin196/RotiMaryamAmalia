@@ -7,6 +7,8 @@
     <title>Dashboard - Mazer Admin Dashboard</title>
 
     @include('admin.layouts.links')
+
+    @livewireStyles
 </head>
 
 <body>
@@ -63,6 +65,7 @@
         </script>
     @endif
 
+    @livewireScripts
 </body>
 
 </html>

@@ -50,4 +50,5 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::get('/admin/home', [HomeController::class, 'adminHome'])->name('admin.home');
     Route::resource('/admin/menu', MenuController::class);
     Route::resource('/admin/pesanan', PesananController::class);
+    Route::put('/admin/pesanan/selesai/{pesanan}', [PesananController::class, 'selesai'])->name('pesanan.selesai');
 });

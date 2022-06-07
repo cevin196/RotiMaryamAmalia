@@ -32,7 +32,7 @@
                                 @foreach ($pesanans as $pesanan)
                                 <tr>
                                     <td class="text-center">{{$loop->index +1}}</td>
-                                    <td>{{($pesanan->user->name)}}</td>
+                                    <td>{{($pesanan->nama)}}</td>
                                     <td>{{$pesanan->tanggal}}</td>
                                     <td>{{rupiah($pesanan->total)}}</td>
                                     <td>

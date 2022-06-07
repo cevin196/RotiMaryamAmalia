@@ -26,6 +26,6 @@ class Pesanan extends Model
 
     public function menus()
     {
-        return $this->belongsToMany(Menu::class)->withPivot('qty');
+        return $this->belongsToMany(Menu::class)->withPivot('qty', 'harga');
     }
 }

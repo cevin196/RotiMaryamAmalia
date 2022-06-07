@@ -30,8 +30,8 @@ class HomeController extends Controller
     public function adminHome()
     {
         $menuCount = Menu::count();
-        $pesananCount = Pesanan::whereMonth('created_at', Carbon::now()->month)->where('status', 'none')->get()->count();
-        $pesananSelesaiCount = Pesanan::whereMonth('created_at', Carbon::now()->month)->where('status', 'capture')->get()->count();
+        $pesananCount = Pesanan::whereMonth('created_at', Carbon::now()->month)->where('status', 'capture')->get()->count();
+        $pesananSelesaiCount = Pesanan::whereMonth('created_at', Carbon::now()->month)->where('status', 'selesai')->get()->count();
         return view('admin.home', compact('menuCount', 'pesananCount', 'pesananSelesaiCount'));
     }
 

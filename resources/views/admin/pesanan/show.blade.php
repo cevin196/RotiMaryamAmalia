@@ -14,7 +14,7 @@
 <div class="col-12">
     <div class="card">
         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-            <h5 class="col-3">Pesanan {{$pesanan->user->name}} </h5>
+            <h5 class="col-6">Pesanan {{$pesanan->nama}} </h5>
             <a href="{{route('pesanan.index')}}" class="btn btn-warning">Kembali</a>
         </div>
         <div class="card-body">
@@ -26,7 +26,7 @@
                             <label>Nama Customer</label>
                         </div>
                         <div class="col-md-9 form-group">
-                            : {{$pesanan->user->name}}
+                            : {{$pesanan->nama}}
                         </div>
                         <div class="col-md-3">
                             <label>Tanggal</label>
@@ -34,6 +34,14 @@
                         <div class="col-md-9 form-group">
                             : {{$pesanan->tanggal}}
                         </div>
+                        
+                        <div class="col-md-3">
+                            <label>Alamat</label>
+                        </div>
+                        <div class="col-md-9 form-group">
+                            : {{$pesanan->alamat}}
+                        </div>
+
                         <div class="col-md-3">
                             <label>Total</label>
                         </div>
@@ -55,14 +63,14 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($pesanan->menus as $pesanan)
+                        @foreach($pesanan->menus as $pesananMenu)
                         <tr>
-                            <td>{{$pesanan->nama}}</td>
-                            <td>{{rupiah($pesanan->harga)}}</td>
-                            <td>{{$pesanan->pivot->qty}}</td>
+                            <td>{{$pesananMenu->nama}}</td>
+                            <td>{{rupiah($pesananMenu->harga)}}</td>
+                            <td>{{$pesananMenu->pivot->qty}}</td>
                             
                             @php
-                                $subTotal = (int)$pesanan->pivot->qty * (int)$pesanan->harga;
+                                $subTotal = (int)$pesananMenu->pivot->qty * (int)$pesananMenu->harga;
                             @endphp
 
                             <script>
@@ -73,6 +81,10 @@
                         @endforeach
                     </tbody>
                 </table>
+                <form action="{{route('pesanan.selesai', $pesanan)}}" class="d-flex justify-content-center" method="POST">
+                    @csrf @method('PUT')
+                    <button type="submit" class="btn btn-success btn-lg">Selesai</button>
+                </form>
             </div>
         </div>
     </div>
