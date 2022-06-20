@@ -87,7 +87,7 @@
                                 </ul>
                                 {{-- <p>Lorem ipsum dolor sit amet, consectetur adip elit, sed do eiusmod tempor incididunt
                                 ut labore et dolore magna aliqua.</p> --}}
-                                @if ($pesanan->status != 'capture')
+                                @if ($pesanan->status != 'settlement')
                                 <button id="pay-button" class="site-btn">Bayar</button>
                                 @endif
                             </div>

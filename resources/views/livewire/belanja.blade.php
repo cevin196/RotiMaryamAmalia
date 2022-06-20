@@ -1,4 +1,9 @@
 <section class="shop spad">
+    <div class="col-lg-12 text-center">
+        <div class="section-title">
+            <h2>Menu Kami</h2>
+        </div>
+    </div>
     @include('admin.includes.formater')
     <div class="container">
         <div class="shop__option">
@@ -6,7 +11,7 @@
                 <div class="col-lg-12 col-md-7">
                     <div class="shop__option__search">
                         <form>
-                            <input type="text" placeholder="Search" wire:model='kataKunci'>
+                            <input type="text" placeholder="Cari Menu..." wire:model='kataKunci'>
                             <button type="submit"><i class="fa fa-search"></i></button>
                         </form>
                     </div>
@@ -37,7 +42,7 @@
                                 @if ($cart->where('id', $menu->id)->count())
                                     <a href="#">Sudah di Keranjang</a>
                                 @else
-                                <button type="submit" class="btn btn-warning text-white">Add to cart</button>
+                                <button type="submit" class="btn btn-warning text-white">Tambah ke Keranjang</button>
                                 @endif
                             </div>
                         </div>

@@ -25,7 +25,7 @@
                                     <th>Nama Customer</th>
                                     <th>Tanggal</th>
                                     <th>Total</th>
-                                    <th class="col-1">Aksi</th>
+                                    <th class="col-2">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -40,7 +40,9 @@
                                             <a href="{{route('pesanan.edit', $pesanan)}}" type="button"><i
                                                     class="bi bi-pen text-warning"></i></a>
                                             <a href="{{route('pesanan.show', $pesanan)}}" type="button"><i
-                                                class="bi bi-eye text-primary"></i></a>
+                                                class="bi bi-eye text-success"></i></a>
+                                            <a href="{{route('pesanan.print', $pesanan)}}" type="button"><i
+                                                class="bi bi-printer text-primary"></i></a>
                                             <form class="d-none" id="delete-{{$pesanan->id}}" method="post"
                                                 action="{{route('pesanan.destroy',$pesanan)}}">
                                                 @csrf @method('DELETE')

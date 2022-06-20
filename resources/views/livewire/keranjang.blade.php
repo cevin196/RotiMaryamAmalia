@@ -52,7 +52,7 @@
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-6">
                         <div class="continue__btn">
-                            <a href="{{route('belanja')}}">Continue Shopping</a>
+                            <a href="{{route('belanja')}}">KEMBALI KE MENU BELANJA</a>
                         </div>
                     </div>
                 </div>
@@ -64,7 +64,7 @@
                         {{-- <li>Subtotal <span>$ 169.50</span></li> --}}
                         <li>Total <span>Rp.  {{$cartTotal}}</span></li>
                     </ul>
-                    <a href="{{route('checkout.index')}}" class="primary-btn">Menu Checkout</a>
+                    <a href="{{route('checkout.index')}}" class="primary-btn">Checkout</a>
                 </div>
             </div>
         </div>

@@ -8,13 +8,13 @@
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-6">
                     <div class="breadcrumb__text">
-                        <h2>Wishlist</h2>
+                        <h2>List Pesanan</h2>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6">
                     <div class="breadcrumb__links">
                         <a href="./index.html">Home</a>
-                        <span>Wishlist</span>
+                        <span>List Pesanan</span>
                     </div>
                 </div>
             </div>
@@ -51,7 +51,7 @@
                                     <td class="cart__price">{{rupiah($pesanan->total)}}</td>
                                     <td class="cart__stock text-center"><span class="badge 
                                         @php
-                                            if($pesanan->status=="capture"){
+                                            if($pesanan->status=="settlement"){
                                                 echo 'bg-success';
                                             }elseif ($pesanan->status == "Batal") {
                                                 echo 'bg-danger';

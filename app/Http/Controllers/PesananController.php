@@ -78,8 +78,15 @@ class PesananController extends Controller
         return redirect(route('pesanan.index'))->with('success', 'Pesanan Selesai!');
     }
 
+    public function print(Pesanan $pesanan)
+    {
+        return view('admin.pesanan.print', compact('pesanan'));
+    }
+
     public function destroy(Pesanan $pesanan)
     {
-        //
+        $pesanan->menus()->detach();
+        $pesanan->delete();
+        return redirect(route('pesanan.index'))->with('success', 'Berhasil hapus pesanan!');
     }
 }

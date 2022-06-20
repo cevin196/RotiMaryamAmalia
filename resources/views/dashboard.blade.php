@@ -1,29 +1,29 @@
 @extends('layouts.app')
 
-@include('admin.includes.formater')
+{{-- @include('admin.includes.formater') --}}
 
 @section('content')
 <section class="hero">
     <div class="hero__slider owl-carousel">
-        <div class="hero__item set-bg" data-setbg="{{asset('templateUser/img/hero/hero-1.jpg')}}">
+        <div class="hero__item set-bg" data-setbg="{{asset('templateUser/img/hero/header1.jpg')}}">
             <div class="container">
                 <div class="row d-flex justify-content-center">
                     <div class="col-lg-8">
                         <div class="hero__text">
                             <h2>Membuat hidup lebih manis dalam satu gigitan!</h2>
-                            <a href="#" class="primary-btn">Menu Kami</a>
+                            <a href="{{route('belanja')}}" class="btn primary-btn">Menu Kami</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="hero__item set-bg" data-setbg="{{asset('templateUser/img/hero/hero-1.jpg')}}">
+        <div class="hero__item set-bg" data-setbg="{{asset('templateUser/img/hero/header2.jpg')}}">
             <div class="container">
                 <div class="row d-flex justify-content-center">
                     <div class="col-lg-8">
                         <div class="hero__text">
                             <h2>Manjakan lidahmu dengan kelezatan yang istimewa!</h2>
-                            <a href="#" class="primary-btn">Menu Kami</a>
+                            {{-- <a href="{{route('belanja')}}" class="primary-btn">Menu Kami</a> --}}
                         </div>
                     </div>
                 </div>
@@ -74,33 +74,8 @@
     </section>
     <!-- About Section End -->
 
-    <!-- Product Section Begin -->
-    <section class="product spad">
-        <div class="container">
-            <div class="row">
-
-                @foreach ($menus as $menu)
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="{{($menu->gambar)?asset('menu/' . $menu->gambar):'menu/menu-default.png'}}">
-                            <div class="product__label">
-                                <span>Roti</span>
-                            </div>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">{{$menu->nama}}</a></h6>
-                            <div class="product__item__price">{{rupiah($menu->harga)}}</div>
-                            <div class="cart_add">
-                                <a href="#">Add to cart</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                @endforeach
-                
-            </div>
-        </div>
-    </section>
+    <!-- Product Section Begin -->    
+    @livewire('belanja')    
     <!-- Product Section End -->
 
     <!-- Testimonial Section Begin -->

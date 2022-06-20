@@ -21,11 +21,14 @@ class Pesanan extends Component
         if ($this->pesanan) {
             $pesananMenus = PesananUser::find($this->pesanan->id)->menus;
             foreach ($pesananMenus as $pesananMenu) {
+                $jumlah = $pesananMenu->pivot->qty * $pesananMenu->pivot->harga;
                 $this->detailPesanans[] = [
                     'menu_id' => $pesananMenu->pivot->menu_id,
                     'qty' => $pesananMenu->pivot->qty,
                     'harga' => $pesananMenu->pivot->harga,
+                    'jumlah' => $jumlah,
                 ];
+                $this->total += $jumlah;
             }
         } else {
             $this->detailPesanans[] = [

@@ -38,6 +38,7 @@ Route::middleware(['auth', 'user-access:user'])->group(function () {
     // Route::get('user/pesanan/', [HomeController::class, 'pesanan'])->name('user-pesanan');
     Route::get('pesanan/{id}', [HomeController::class, 'pesanan'])->name('pesanan');
     Route::post('pesanan', [HomeController::class, 'pesananStore'])->name('user.pesanan.store');
+    Route::get('refresh-status-pesanan/{orderId}', [HomeController::class, 'refresh'])->name('user.pesanan.refresh');
 });
 
 /*------------------------------------------
@@ -50,5 +51,6 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::get('/admin/home', [HomeController::class, 'adminHome'])->name('admin.home');
     Route::resource('/admin/menu', MenuController::class);
     Route::resource('/admin/pesanan', PesananController::class);
+    Route::get('/admin/pesanan/print/{pesanan}', [PesananController::class, 'print'])->name('pesanan.print');
     Route::put('/admin/pesanan/selesai/{pesanan}', [PesananController::class, 'selesai'])->name('pesanan.selesai');
 });

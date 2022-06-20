@@ -11,6 +11,7 @@ use Livewire\WithPagination;
 use App\Services\Midtrans\CreateSnapTokenService;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Symfony\Component\Mime\Encoder\Base64Encoder;
 
 class HomeController extends Controller
 {
@@ -85,17 +86,22 @@ class HomeController extends Controller
         $pesanan->save();
 
         foreach ($carts as $cart) {
-            $pesanan->menus()->attach($cart->id, ['qty' => $cart->qty]);
+            $pesanan->menus()->attach($cart->id, ['qty' => $cart->qty, 'harga' => $cart->price]);
         }
 
         Cart::destroy();
 
-        return redirect(route('list-pesanan'));
+        return redirect(route('pesanan', $pesanan->id));
     }
 
     public function listPesanan()
     {
         $pesanans = Pesanan::where('user_id', Auth::user()->id)->whereMonth('created_at', Carbon::now()->month)->get();
+        foreach ($pesanans as $pesanan) {
+            if ($pesanan->status != "settlement" && $pesanan->status != "none") {
+                $this->statusUpdate($pesanan);
+            }
+        }
         return view('listPesanan', compact('pesanans'));
     }
 
@@ -104,6 +110,7 @@ class HomeController extends Controller
     {
         // dd('test');
         $pesanan = Pesanan::find($id);
+
         if ($pesanan->user_id != Auth::user()->id) {
             return redirect(route('list-pesanan'));
         }
@@ -138,9 +145,47 @@ class HomeController extends Controller
         return view('pesanan', compact('pesanan'));
     }
 
+    public function refresh()
+    {
+    }
+    public function statusUpdate(Pesanan $pesanan)
+    {
+        $curl = curl_init();
+        $serverKey = base64_encode("SB-Mid-server-QklHfV3m4Pobw_rvpGqf_o9-" . ":");
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => "https://api.sandbox.midtrans.com/v2/" . $pesanan->nomor_pesanan . "/status",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_TIMEOUT => 30000,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "GET",
+            CURLOPT_HTTPHEADER => array(
+                'Content-Type: application/json',
+                'Accept: application/json',
+                'Authorization: Basic ' . $serverKey,
+            ),
+        ));
+        $response = curl_exec($curl);
+        $err = curl_error($curl);
+        curl_close($curl);
+
+        if ($err) {
+            echo "cURL Error #:" . $err;
+        } else {
+            // echo 'asdf';
+            $result = json_decode($response);
+            // dd($result);
+            $pesanan->status = $result->transaction_status;
+            $pesanan->update();
+        }
+    }
+
     public function pesananStore(Request $request)
     {
+        // $this->statusCheck();
         $statusMessage = json_decode($request->paymentResponse);
+
 
         $pesanan = Pesanan::find($request->pesanan_id);
         $pesanan->status = $statusMessage->transaction_status;
