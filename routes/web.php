@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\UserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\PesananController;
@@ -54,4 +55,7 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::get('/admin/pesanan/print/{pesanan}', [PesananController::class, 'print'])->name('pesanan.print');
     Route::get('/admin/pesanan/selesai/{pesanan}', [PesananController::class, 'selesai'])->name('pesanan.selesai');
     Route::get('admin/riwayat-pesanan', [PesananController::class, 'riwayat'])->name('riwayat');
+    Route::get('admin/edit-akun/', [UserController::class, 'adminEditProfil'])->name('admin.editAkun');
+    Route::put('admin/change-password/', [UserController::class, 'changePassword'])->name('admin.changePassword');
+    Route::resource('admin/user', UserController::class);
 });

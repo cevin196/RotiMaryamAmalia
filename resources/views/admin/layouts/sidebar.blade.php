@@ -45,7 +45,7 @@
                 <li class="sidebar-title">Users & Account</li>
 
                 <li class="sidebar-item ">
-                    <a href="index.html" class='sidebar-link'>
+                    <a href="{{route('admin.editAkun')}}" class='sidebar-link'>
                         <i class="bi bi-person-circle"></i>
                         <span>Akun</span>
                     </a>
