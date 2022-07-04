@@ -1,4 +1,4 @@
-<!doctype html>
+{{-- <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
@@ -80,4 +80,48 @@
         </main>
     </div>
 </body>
+</html> --}}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{asset("login2/fonts/icomoon/style.css")}}">
+
+    <link rel="stylesheet" href="{{asset("login2/css/owl.carousel.min.css")}}">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{asset("login2/css/bootstrap.min.css")}}">
+    
+    <!-- Style -->
+    <link rel="stylesheet" href="{{asset("login2/css/style.css")}}">
+
+    <title>Login</title>
+  </head>
+  <body>
+  
+
+  <div class="d-lg-flex half">
+    <div class="bg order-1 order-md-2" style="background-image: url('{{asset("login2/images/bg_1.jpg")}}');"></div>
+    <div class="contents order-2 order-md-1">
+
+     @section('content')
+         
+     @show
+    </div>
+
+    
+  </div>
+    
+    
+
+    <script src="{{asset("login2/js/jquery-3.3.1.min.js")}}"></script>
+    <script src="{{asset("login2/js/popper.min.js")}}"></script>
+    <script src="{{asset("login2/js/bootstrap.min.js")}}"></script>
+    <script src="{{asset("login2/js/main.js")}}"></script>
+  </body>
 </html>

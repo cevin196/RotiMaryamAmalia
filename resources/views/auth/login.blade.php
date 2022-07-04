@@ -1,5 +1,5 @@
 @extends('auth.app')
-
+{{-- 
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -70,4 +70,44 @@
         </div>
     </div>
 </div>
+@endsection --}}
+
+@section('content')
+<div class="container">
+    <div class="row align-items-center justify-content-center">
+      <div class="col-md-7">
+        <h3 class="mb-3">Login to Continue</h3>            
+        <form method="POST" action="{{ route('login') }}">
+            @csrf
+          <div class="form-group first">
+            <label for="email">Email</label>
+            <input name="email" type="email" class="form-control" placeholder="your-email@gmail.com" id="email">
+            @error('email')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+          </div>
+          <div class="form-group last mb-3">
+            <label for="password">Password</label>
+            <input name="password" type="password" class="form-control" placeholder="Your Password" id="password">
+            @error('password')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+          </div>
+          
+          @if (session('danger'))
+          <div class="text-danger mb-1">
+             {!! session('danger') !!}
+          </div>
+          @endif
+
+          <input type="submit" value="Log In" class="btn btn-block btn-primary">
+          <p class="pt-2">Don't have account? <a href="{{route('register')}}">Register Here</a></p>
+        </form>
+      </div>
+    </div>
+  </div>
 @endsection

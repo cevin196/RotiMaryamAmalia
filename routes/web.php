@@ -52,5 +52,6 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::resource('/admin/menu', MenuController::class);
     Route::resource('/admin/pesanan', PesananController::class);
     Route::get('/admin/pesanan/print/{pesanan}', [PesananController::class, 'print'])->name('pesanan.print');
-    Route::put('/admin/pesanan/selesai/{pesanan}', [PesananController::class, 'selesai'])->name('pesanan.selesai');
+    Route::get('/admin/pesanan/selesai/{pesanan}', [PesananController::class, 'selesai'])->name('pesanan.selesai');
+    Route::get('admin/riwayat-pesanan', [PesananController::class, 'riwayat'])->name('riwayat');
 });

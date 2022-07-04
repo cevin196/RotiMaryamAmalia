@@ -34,8 +34,8 @@
                     </a>
                 </li>
 
-                <li class="sidebar-item ">
-                    <a href="index.html" class='sidebar-link'>
+                <li class="sidebar-item {{str_contains(Route::currentRouteName(),'riwayat')?'active': ''}}">
+                    <a href="{{route('riwayat')}}" class='sidebar-link'>
                         <i class="bi bi-clock-history"></i>
                         <span>Riwayat</span>
                     </a>

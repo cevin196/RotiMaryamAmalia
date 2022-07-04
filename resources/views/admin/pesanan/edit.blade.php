@@ -15,7 +15,10 @@
     <div class="card">
         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
             <h5 class="col-3">Edit Pesanan</h5>
-            <a href="{{route('pesanan.index')}}" class="btn btn-warning">Kembali</a>
+            <div>
+                <a href="{{route('pesanan.selesai', $pesanan)}}" class="btn btn-success">Tandai Selesai</a>
+                <a href="{{route('pesanan.index')}}" class="btn btn-warning">Kembali</a>
+            </div>
         </div>
         <div class="card-body">
             <form action="{{route('pesanan.update', $pesanan)}}" method="POST">

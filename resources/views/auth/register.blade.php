@@ -1,6 +1,6 @@
 @extends('auth.app')
 
-@section('content')
+{{-- @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -88,4 +88,75 @@
         </div>
     </div>
 </div>
+@endsection --}}
+
+
+
+@section('content')
+<div class="container">
+    <div class="row align-items-center justify-content-center">
+      <div class="col-md-7">
+        <h3 class="mb-3">Register New Account</h3>            
+        <form method="POST" action="{{ route('register') }}">
+            @csrf
+
+            <div class="form-group first">
+                <label for="name">Name</label>
+                <input name="name" type="text" class="form-control" placeholder="Name..." id="name">
+                @error('name')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+              </div>
+
+              <div class="form-group first">
+                <label for="email">Email</label>
+                <input name="email" type="email" class="form-control" placeholder="your-email@gmail.com" id="email">
+                @error('email')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+              </div>
+
+          <div class="form-group first">
+            <label for="phone">Phone Number</label>
+            <input name="telepon" type="tel" class="form-control" placeholder="081112233" id="telepon">
+            @error('telepon')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+          </div>
+
+
+          <div class="form-group last mb-3">
+            <label for="password">Password</label>
+            <input name="password" type="password" class="form-control" placeholder="Your Password" id="password" required autocomplete="new-password"> 
+            @error('password')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+          </div>
+
+          <div class="form-group last mb-3">
+            <label for="password-confirm">Password Confirm</label>
+            <input name="password_confirmation" type="password" class="form-control" placeholder="Re-type Password" id="password-confirm" required autocomplete="new-password">
+        
+          </div>
+          
+          @if (session('danger'))
+          <div class="text-danger mb-1">
+             {!! session('danger') !!}
+          </div>
+          @endif
+
+          <input type="submit" value="Register" class="btn btn-block btn-primary">
+
+        </form>
+      </div>
+    </div>
+  </div>
 @endsection

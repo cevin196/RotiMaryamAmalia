@@ -65,6 +65,6 @@
             </div>
         </div>
     </div>
-    <button wire:click.prevent="addRow" type="button" class="btn btn-success mt-1">Tambah Data</button>
+    <button wire:click.prevent="addRow" type="button" class="btn btn-primary mt-1">Tambah Data</button>
 
 </div>

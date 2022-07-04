@@ -20,7 +20,7 @@ return new class extends Migration
             // from detail user
             $table->string('nama');
             $table->text('alamat');
-            $table->string('telepon');
+            $table->string('telepon', 15);
             $table->string('email');
             $table->string('catatan')->nullable();
 

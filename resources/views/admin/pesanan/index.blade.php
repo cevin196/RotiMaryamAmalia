@@ -36,13 +36,17 @@
                                     <td>{{$pesanan->tanggal}}</td>
                                     <td>{{rupiah($pesanan->total)}}</td>
                                     <td>
+                                       
                                         <div class="d-flex justify-content-around">
+                                            @if ($pesanan->status=="selesai")
+                                            <a href="{{route('pesanan.print', $pesanan)}}" type="button"><i
+                                                class="bi bi-printer text-primary"></i></a>
+                                            @else
                                             <a href="{{route('pesanan.edit', $pesanan)}}" type="button"><i
                                                     class="bi bi-pen text-warning"></i></a>
                                             <a href="{{route('pesanan.show', $pesanan)}}" type="button"><i
                                                 class="bi bi-eye text-success"></i></a>
-                                            <a href="{{route('pesanan.print', $pesanan)}}" type="button"><i
-                                                class="bi bi-printer text-primary"></i></a>
+                                            
                                             <form class="d-none" id="delete-{{$pesanan->id}}" method="post"
                                                 action="{{route('pesanan.destroy',$pesanan)}}">
                                                 @csrf @method('DELETE')
@@ -50,6 +54,7 @@
                                             <a href="#"
                                                 onclick="document.getElementById('delete-{{$pesanan->id}}').submit();"><i
                                                     class="bi bi-trash text-danger"></i></a>
+                                            @endif
                                         </div>
                                     </td>
                                 </tr>

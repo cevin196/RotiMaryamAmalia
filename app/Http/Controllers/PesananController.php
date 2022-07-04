@@ -11,7 +11,14 @@ class PesananController extends Controller
 {
     public function index()
     {
-        $pesanans = Pesanan::whereMonth('created_at', Carbon::now()->month)->where('status', 'capture')->get();
+        $pesanans = Pesanan::whereMonth('created_at', Carbon::now()->month)->where('status', 'settlement')->get();
+        return view('admin.pesanan.index', compact('pesanans'));
+    }
+
+
+    public function riwayat()
+    {
+        $pesanans = Pesanan::whereMonth('created_at', Carbon::now()->month)->where('status', 'selesai')->get();
         return view('admin.pesanan.index', compact('pesanans'));
     }
 
@@ -42,7 +49,7 @@ class PesananController extends Controller
         $pesanan->email = $request->email;
         $pesanan->catatan = $request->catatan;
         $pesanan->total = $request->total;
-        $pesanan->status = 'capture';
+        $pesanan->status = 'settlement';
         $pesanan->save();
 
         foreach ($request->detailPesanans as $detailPesanan) {
@@ -75,7 +82,7 @@ class PesananController extends Controller
         $pesanan->status = "selesai";
         $pesanan->update();
 
-        return redirect(route('pesanan.index'))->with('success', 'Pesanan Selesai!');
+        return redirect(route('pesanan.print', $pesanan));
     }
 
     public function print(Pesanan $pesanan)
