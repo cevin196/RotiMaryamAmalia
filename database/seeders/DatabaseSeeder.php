@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\City;
 use App\Models\Menu;
 use App\Models\Pesanan;
 use App\Models\User;
@@ -13,6 +14,33 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
+        $cities = [
+            [
+                'name' => 'Yogyakarta',
+                'shipping_cost' => 10000
+            ],
+            [
+                'name' => 'Balikpapan',
+                'shipping_cost' => 50000
+            ],
+            [
+                'name' => 'Jakarta',
+                'shipping_cost' => 35000
+            ],
+            [
+                'name' => 'Surabaya',
+                'shipping_cost' => 25000
+            ],
+            [
+                'name' => 'Malang',
+                'shipping_cost' => 20000
+            ],
+        ];
+
+        foreach ($cities as $city) {
+            City::create($city);
+        }
+
         $users = [
             [
                 'name' => 'Admin User',
@@ -27,6 +55,7 @@ class DatabaseSeeder extends Seeder
                 'tipe' => 0,
                 'telepon' => "08112233",
                 'password' => bcrypt('password'),
+                'city_id' => City::all()->random()->id
             ],
         ];
 

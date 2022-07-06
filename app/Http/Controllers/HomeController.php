@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\City;
 use App\Models\Menu;
 use App\Models\Pesanan;
 use Illuminate\Http\Request;
@@ -51,9 +52,9 @@ class HomeController extends Controller
     {
 
         $cart = Cart::content();
+        $cities = City::all();
 
-
-        return view('checkout', compact('cart'));
+        return view('checkout', compact('cart', 'cities'));
     }
 
 
@@ -79,6 +80,7 @@ class HomeController extends Controller
         $pesanan->tanggal = Carbon::now();
         $pesanan->nama = $request->nama;
         $pesanan->alamat = $request->alamat;
+        $pesanan->city = $request->city;
         $pesanan->email = $request->email;
         $pesanan->catatan = $request->catatan;
         $pesanan->telepon = $request->telepon;

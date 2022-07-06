@@ -19,6 +19,7 @@ return new class extends Migration
 
             // from detail user
             $table->string('nama');
+            $table->string('city')->nullable();
             $table->text('alamat');
             $table->string('telepon', 15);
             $table->string('email');

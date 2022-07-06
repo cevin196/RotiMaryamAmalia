@@ -14,6 +14,6 @@
             </ul>
         </li>
         {{-- <li><a href="./blog.html">Blog</a></li> --}}
-        <li><a href="./contact.html">Kontak Kami</a></li>
+        <li><a href="{{route('kontak-kami')}}">Kontak Kami</a></li>
     </ul>
 </nav>

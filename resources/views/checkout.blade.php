@@ -46,6 +46,20 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="row mb-3">
+                            <div class="col-lg-12">
+                                <div class="checkout__input">
+                                    <p>Kota<span>*</span></p>
+                                    <select name="city" class="select2" >
+                                        @foreach ($cities as $city)
+                                        <option value="{{$city->name}}" {{(Auth::user()->city->id==$city->id)?'selected':''}}>{{$city->name}}</option>
+                                        @endforeach
+                                    </select>                                                                       
+                                </div>
+                            </div>
+                        </div>
+                        
                         <div class="checkout__input">
                             <p>Alamat<span>*</span></p>
                             <textarea name="alamat" id="" rows="5"

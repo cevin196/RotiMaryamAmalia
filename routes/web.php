@@ -18,6 +18,7 @@ Route::get('/', function () {
     return view('dashboard', compact('menus'));
 })->name('dashboard');
 Route::get('/tentang-kami', [HomeController::class, 'tentangKami'])->name('tentang-kami');
+Route::view('/kontak-kami', 'contact')->name('kontak-kami');
 Auth::routes();
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\City;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -17,6 +18,7 @@ class PesananFactory extends Factory
             'total' => rand(15000, 150000),
             'nomor_pesanan' => $this->faker->numberBetween($min = 1000000, $max = 9000000),
 
+            'city' => City::all()->random()->id,
             'nama' => $user->name,
             'telepon' => $user->telepon,
             'alamat' => $this->faker->address(),

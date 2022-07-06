@@ -36,4 +36,9 @@ class User extends Authenticatable
             get: fn ($value) =>  ["user", "admin"][$value],
         );
     }
+
+    public function city()
+    {
+        return $this->belongsTo(City::class);
+    }
 }

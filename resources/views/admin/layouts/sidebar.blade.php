@@ -45,9 +45,16 @@
                 <li class="sidebar-title">Users & Account</li>
 
                 <li class="sidebar-item ">
+                    <a href="{{route('user.index')}}" class='sidebar-link'>
+                        <i class="bi bi-people"></i>
+                        <span>Kelola Akun</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item ">
                     <a href="{{route('admin.editAkun')}}" class='sidebar-link'>
                         <i class="bi bi-person-circle"></i>
-                        <span>Akun</span>
+                        <span>Edit Profil</span>
                     </a>
                 </li>
                 

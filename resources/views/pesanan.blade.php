@@ -49,6 +49,14 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="checkout__input">
+                                        <p>Kota<span>*</span></p>
+                                        <input type="text" value="{{$pesanan->city}}" disabled>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="checkout__input">
                                 <p>Alamat<span>*</span></p>
                                 <textarea name="alamat" id="" rows="5" class="form-control" disabled>{{$pesanan->alamat}}</textarea>
@@ -69,8 +77,7 @@
                             </div>
                             <div class="checkout__input">
                                 <p>Catatan<span>*</span></p>
-                                <input type="text"
-                                placeholder="Catatan tambahan untuk pesanan anda" disabled>
+                                <input type="text" disabled value="{{$pesanan->catatan}}">
                             </div>
                         </div>
                         <div class="col-lg-5 col-md-6">

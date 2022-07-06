@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\City;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -20,6 +21,8 @@ class UserFactory extends Factory
             'remember_token' => Str::random(10),
             'tipe' => 0,
             'telepon' => "08112233",
+            'city_id' => City::all()->random()->id,
+            'alamat' => $this->faker->address()
         ];
     }
 
