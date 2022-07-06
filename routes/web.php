@@ -57,6 +57,7 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::get('/admin/pesanan/selesai/{pesanan}', [PesananController::class, 'selesai'])->name('pesanan.selesai');
     Route::get('admin/riwayat-pesanan', [PesananController::class, 'riwayat'])->name('riwayat');
     Route::get('admin/edit-akun/', [UserController::class, 'adminEditProfil'])->name('admin.editAkun');
+    Route::put('admin/update-profil/{user}', [UserController::class, 'adminUpdateProfil'])->name('admin.updateAkun');
     Route::put('admin/change-password/', [UserController::class, 'changePassword'])->name('admin.changePassword');
     Route::resource('admin/user', UserController::class);
 });

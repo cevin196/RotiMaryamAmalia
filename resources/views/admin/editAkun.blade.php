@@ -7,7 +7,7 @@
 <div class="col-12">
     <div class="card">
         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-            <h5 class="col-3">Edit Akun</h5>            
+            <h5 class="col-3">Edit Akun</h5>
         </div>
         <div class="card-body">
             <form action="{{route('user.update', $user)}}" method="POST">
@@ -35,14 +35,11 @@
                         </div>
                     </div>
                 </div>
-               
 
-                 <!-- Button trigger modal -->
-                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     Change Password
                 </button>
-
-               
 
                 <div class="w-100 d-flex flex-row justify-content-center mt-3">
                     <button type="submit" class="btn btn-success mx-2">Update</button>
@@ -52,32 +49,30 @@
     </div>
 </div>
 
- <!-- Modal -->
- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
- aria-hidden="true">
- <div class="modal-dialog">
-     <div class="modal-content">
-         <form action="{{route('admin.changePassword')}}" method="POST">
-            @csrf @method('PUT')
-         <div class="modal-header">
-             <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-             <button type="button" class="btn-close" data-bs-dismiss="modal"
-                 aria-label="Close"></button>
-         </div>
-         <div class="modal-body">
-             <label for="OldPassword" class="form-label">Old Password</label>
-             <input type="password" name="old_password" class="form-control form-group" id="oldPassword" 
-             placeholder="Old Password">
-             <label for="password" class="form-label">New Password</label>
-             <input type="password" name="new_password" class="form-control form-group" id="password"
-                 placeholder="New Password">
-         </div>
-         <div class="modal-footer">
-             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-             <button type="submit" class="btn btn-primary">Change Password</button>
-         </div>
-         </form>
-     </div>
- </div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action="{{route('admin.changePassword')}}" method="POST">
+                @csrf @method('PUT')
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <label for="OldPassword" class="form-label">Old Password</label>
+                    <input type="password" name="old_password" class="form-control form-group" id="oldPassword"
+                        placeholder="Old Password">
+                    <label for="password" class="form-label">New Password</label>
+                    <input type="password" name="new_password" class="form-control form-group" id="password"
+                        placeholder="New Password">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Change Password</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
 @endsection

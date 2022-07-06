@@ -1,5 +1,5 @@
 @extends('admin.layouts.app')
-@section('page-title', 'Tambah Menu')
+@section('page-title', 'Kelola Pengguna')
 
 
 @include('admin.includes.formater')
@@ -8,14 +8,16 @@
 <div class="col-12">
     <div class="card">
         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-            <h5 class="col-3">Tambah Menu</h5>
-            <a href="{{route('menu.index')}}" class="btn btn-warning">Kembali</a>
+            <h5 class="col-3">Tambah Pengguna</h5>
+            <a href="{{route('user.index')}}" class="btn btn-warning">Kembali</a>
         </div>
         <div class="card-body">
-            <form action="{{route('menu.store')}}" method="POST" enctype="multipart/form-data">
+            <form action="{{route('user.store')}}" method="POST">
                 @csrf
                 <label for="name" class="form-label">Nama</label>
-                <input type="text" name="nama" class="form-control form-group" id="name" placeholder="Contoh: Roti Maryam Coklat">
+                <input type="text" name="nama" class="form-control form-group" id="name" placeholder="Nama Penguna...">
+                <label for="name" class="form-label">Nama</label>
+                <input type="text" name="nama" class="form-control form-group" id="name" placeholder="Nama Penguna...">
                 <div class="row">
                     <div class="col-md-6 col-12">
                         <div class="form-group">
