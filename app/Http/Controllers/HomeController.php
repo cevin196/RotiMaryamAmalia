@@ -60,7 +60,6 @@ class HomeController extends Controller
 
     public function checkoutPost(Request $request)
     {
-
         $validated = $request->validate([
             'nama' => 'required',
             'alamat' => 'required',
@@ -80,7 +79,7 @@ class HomeController extends Controller
         $pesanan->tanggal = Carbon::now();
         $pesanan->nama = $request->nama;
         $pesanan->alamat = $request->alamat;
-        $pesanan->city = $request->city;
+        $pesanan->city_id = $request->city_id;
         $pesanan->email = $request->email;
         $pesanan->catatan = $request->catatan;
         $pesanan->telepon = $request->telepon;
@@ -110,8 +109,8 @@ class HomeController extends Controller
 
     public function pesanan($id)
     {
-        // dd('test');
         $pesanan = Pesanan::find($id);
+        $total = $pesanan->total + $pesanan->city->shipping_cost;
 
         if ($pesanan->user_id != Auth::user()->id) {
             return redirect(route('list-pesanan'));
@@ -130,7 +129,7 @@ class HomeController extends Controller
             $params = array(
                 'transaction_details' => array(
                     'order_id' => $pesanan->nomor_pesanan,
-                    'gross_amount' => $pesanan->total,
+                    'gross_amount' => $total,
                 ),
                 'customer_details' => array(
                     'name' => $pesanan->nama,

@@ -51,9 +51,9 @@
                             <div class="col-lg-12">
                                 <div class="checkout__input">
                                     <p>Kota<span>*</span></p>
-                                    <select name="city" class="select2" >
+                                    <select name="city_id" class="select2" >
                                         @foreach ($cities as $city)
-                                        <option value="{{$city->name}}" {{(Auth::user()->city->id==$city->id)?'selected':''}}>{{$city->name}}</option>
+                                        <option value="{{$city->id}}" {{(Auth::user()->city->id==$city->id)?'selected':''}}>{{$city->name}}</option>
                                         @endforeach
                                     </select>                                                                       
                                 </div>

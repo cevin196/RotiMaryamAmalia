@@ -53,7 +53,7 @@
                                 <div class="col-lg-12">
                                     <div class="checkout__input">
                                         <p>Kota<span>*</span></p>
-                                        <input type="text" value="{{$pesanan->city}}" disabled>
+                                        <input type="text" value="{{$pesanan->city->name}}" disabled>
                                     </div>
                                 </div>
                             </div>
@@ -89,8 +89,11 @@
                                     <li><samp>{{$loop->index + 1}}</samp> {{$pesananMenu->nama}}({{$pesananMenu->pivot->qty}}) <span>{{rupiah((int)$pesananMenu->pivot->qty * (int) $pesananMenu->harga)}}</span></li>
                                     @endforeach
                                 </ul>
+                                <ul class="checkout__order__products">
+                                    <li>Ongkir <span>{{rupiah($pesanan->city->shipping_cost)}}</span></li>
+                                </ul>
                                 <ul class="checkout__total__all">
-                                    <li>Total <span>{{rupiah($pesanan->total)}}</span></li>
+                                    <li>Total <span>{{rupiah($pesanan->total + $pesanan->city->shipping_cost)}}</span></li>
                                 </ul>
                                 {{-- <p>Lorem ipsum dolor sit amet, consectetur adip elit, sed do eiusmod tempor incididunt
                                 ut labore et dolore magna aliqua.</p> --}}

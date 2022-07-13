@@ -17,8 +17,8 @@
                             <a href="{{route('login')}}" class="btn btn-outline-warning">Masuk</a>
                             @endif
                         </div>
-                        <div class="header__logo">
-                            <a href="{{route('dashboard')}}"><img src="{{('/templateUser/img/logo.png')}}" alt=""></a>
+                        <div class="header__logo" style=" margin-left: -120px" >
+                            <a href="{{route('dashboard')}}"><img src="{{('/templateUser/img/logoFix.png')}}" alt=""></a>
                         </div>
                         <div class="header__top__right">
                             <div class="header__top__right__links">                                

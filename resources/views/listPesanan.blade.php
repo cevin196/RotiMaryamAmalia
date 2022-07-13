@@ -48,7 +48,7 @@
                                             <h6>{{$pesanan->tanggal}}</h6>
                                         </div>
                                     </td>
-                                    <td class="cart__price">{{rupiah($pesanan->total)}}</td>
+                                    <td class="cart__price">{{rupiah($pesanan->total + $pesanan->city->shipping_cost)}}</td>
                                     <td class="cart__stock text-center"><span class="badge 
                                         @php
                                             if($pesanan->status=="settlement"){

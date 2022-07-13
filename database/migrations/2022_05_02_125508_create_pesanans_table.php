@@ -13,13 +13,13 @@ return new class extends Migration
             $table->unsignedBigInteger('nomor_pesanan');
             $table->foreignId('user_id')->nullable()->constrained();
             $table->date('tanggal');
+            $table->foreignId('city_id');
             $table->bigInteger('total')->default(0)->unsigned();
             $table->string('status')->default('none');
             $table->string('snap_token')->nullable();
 
             // from detail user
             $table->string('nama');
-            $table->string('city')->nullable();
             $table->text('alamat');
             $table->string('telepon', 15);
             $table->string('email');

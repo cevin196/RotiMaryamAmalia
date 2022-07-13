@@ -521,6 +521,10 @@ ol {
   display: none;
 }
 
+.header-img{
+  
+}
+
 /*---------------------
   Hero
 -----------------------*/
@@ -3592,6 +3596,7 @@ ol {
     left: 0;
     top: 0;
     margin-left: 0;
+    background-color: red;
   }
 
   .header__top__inner {

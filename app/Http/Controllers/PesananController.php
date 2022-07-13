@@ -11,7 +11,7 @@ class PesananController extends Controller
 {
     public function index()
     {
-        $pesanans = Pesanan::whereMonth('created_at', Carbon::now()->month)->where('status', 'settlement')->get();
+        $pesanans = Pesanan::whereMonth('tanggal', Carbon::now()->month)->where('status', 'settlement')->get();
         return view('admin.pesanan.index', compact('pesanans'));
     }
 

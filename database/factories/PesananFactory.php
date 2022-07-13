@@ -18,11 +18,12 @@ class PesananFactory extends Factory
             'total' => rand(15000, 150000),
             'nomor_pesanan' => $this->faker->numberBetween($min = 1000000, $max = 9000000),
 
-            'city' => City::all()->random()->id,
+            'city_id' => City::all()->random()->id,
             'nama' => $user->name,
             'telepon' => $user->telepon,
             'alamat' => $this->faker->address(),
             'email' => $user->email,
+            'status' => 'settlement'
 
         ];
     }

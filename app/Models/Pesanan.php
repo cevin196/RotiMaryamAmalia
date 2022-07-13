@@ -28,4 +28,9 @@ class Pesanan extends Model
     {
         return $this->belongsToMany(Menu::class)->withPivot('qty', 'harga');
     }
+
+    public function city()
+    {
+        return $this->belongsTo(City::class);
+    }
 }

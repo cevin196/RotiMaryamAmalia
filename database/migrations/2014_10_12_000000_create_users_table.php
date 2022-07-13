@@ -15,7 +15,7 @@ return new class extends Migration
             // $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('telepon', 15);
-            $table->foreignId('city_id')->nullable()->constrained();
+            $table->foreignId('city_id')->default(1)->constrained();
             $table->text('alamat')->nullable();
             $table->tinyInteger('tipe')->default(0);
             $table->rememberToken();

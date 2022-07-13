@@ -68,7 +68,7 @@
         </div>
     </div>
 </div>
-<div class="col-12">
+{{-- <div class="col-12">
     <div class="card">
         <div class="card-header">
             <h4>Profile Visit</h4>
@@ -77,7 +77,7 @@
             <div id="chart-profile-visit"></div>
         </div>
     </div>
-</div>
+</div> --}}
 @endsection
 
 @section('script')
