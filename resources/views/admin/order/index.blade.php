@@ -12,7 +12,7 @@
     <div class="card">
         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
             <h5 class="col-3">Tabel Menu</h5>
-            <a href="{{route('pesanan.create')}}" class="btn btn-primary">Tambah</a>
+            <a href="{{route('order.create')}}" class="btn btn-primary">Tambah</a>
         </div>
         <div class="card-body">
             <div id="table1_wrapper" class="dataTables_wrapper dt-bootstrap5 no-footer">
@@ -29,30 +29,29 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($pesanans as $pesanan)
+                                @foreach ($orders as $order)
                                 <tr>
                                     <td class="text-center">{{$loop->index +1}}</td>
-                                    <td>{{($pesanan->nama)}}</td>
-                                    <td>{{$pesanan->tanggal}}</td>
-                                    <td>{{rupiah($pesanan->total)}}</td>
+                                    <td>{{($order->name)}}</td>
+                                    <td>{{$order->date}}</td>
+                                    <td>{{rupiah($order->total)}}</td>
                                     <td>
-                                       
                                         <div class="d-flex justify-content-around">
-                                            @if ($pesanan->status=="selesai")
-                                            <a href="{{route('pesanan.print', $pesanan)}}" type="button"><i
+                                            @if ($order->status=="done")
+                                            <a href="{{route('order.print', $order)}}" type="button"><i
                                                 class="bi bi-printer text-primary"></i></a>
                                             @else
-                                            <a href="{{route('pesanan.edit', $pesanan)}}" type="button"><i
+                                            <a href="{{route('order.edit', $order)}}" type="button"><i
                                                     class="bi bi-pen text-warning"></i></a>
-                                            <a href="{{route('pesanan.show', $pesanan)}}" type="button"><i
+                                            <a href="{{route('order.show', $order)}}" type="button"><i
                                                 class="bi bi-eye text-success"></i></a>
                                             
-                                            <form class="d-none" id="delete-{{$pesanan->id}}" method="post"
-                                                action="{{route('pesanan.destroy',$pesanan)}}">
+                                            <form class="d-none" id="delete-{{$order->id}}" method="post"
+                                                action="{{route('order.destroy',$order)}}">
                                                 @csrf @method('DELETE')
                                             </form>
                                             <a href="#"
-                                                onclick="document.getElementById('delete-{{$pesanan->id}}').submit();"><i
+                                                onclick="document.getElementById('delete-{{$order->id}}').submit();"><i
                                                     class="bi bi-trash text-danger"></i></a>
                                             @endif
                                         </div>

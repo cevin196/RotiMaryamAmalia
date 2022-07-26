@@ -22,6 +22,6 @@
     <!-- Breadcrumb End -->
 
     <!-- Shopping Cart Section Begin -->
-    @livewire('keranjang')
+    @livewire('cart')
     <!-- Shopping Cart Section End -->
 @endsection

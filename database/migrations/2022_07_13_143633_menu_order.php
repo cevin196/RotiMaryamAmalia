@@ -8,11 +8,10 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::create('menu_pesanan', function (Blueprint $table) {
+        Schema::create('menu_order', function (Blueprint $table) {
+            $table->foreignId('order_id')->constrained();
             $table->foreignId('menu_id')->constrained();
-            $table->foreignId('pesanan_id')->constrained();
             $table->integer('qty');
-            $table->bigInteger('harga')->unsigned();
         });
     }
 

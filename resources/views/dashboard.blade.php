@@ -11,7 +11,7 @@
                     <div class="col-lg-8">
                         <div class="hero__text">
                             <h2>Membuat hidup lebih manis dalam satu gigitan!</h2>
-                            <a href="{{route('belanja')}}" class="btn primary-btn">Menu Kami</a>
+                            <a href="{{route('shop')}}" class="btn primary-btn">Menu Kami</a>
                         </div>
                     </div>
                 </div>
@@ -75,7 +75,7 @@
     <!-- About Section End -->
 
     <!-- Product Section Begin -->    
-    @livewire('belanja')    
+    @livewire('shop')    
     <!-- Product Section End -->
 
     <!-- Testimonial Section Begin -->

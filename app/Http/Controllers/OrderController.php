@@ -2,84 +2,125 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Menu;
 use App\Models\Order;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        $orders = Order::whereMonth('date', Carbon::now()->month)->where('status', 'settlement')->get();
+        return view('admin.order.index', compact('orders'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+    public function history()
+    {
+        $orders = Order::whereMonth('date', Carbon::now()->month)->where('status', 'done')->get();
+        return view('admin.order.index', compact('orders'));
+    }
+
     public function create()
     {
-        //
+        $menus = Menu::where('status', 1)->get();
+        return view('admin.order.create', compact('menus'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $validated =  $request->validate([
+            'name' => 'required',
+            'date' => 'required|date',
+            'phone_number' => 'required|max:15',
+            'address' => 'required',
+        ]);
+
+        $order = new order;
+        do {
+            $refrence_id = mt_rand(1000000000, 9999999999);
+        } while (Order::where('nomor_order', $refrence_id)->exists());
+        $order->nomor_order = $refrence_id;
+        $order->date = $request->date;
+        $order->name = $request->name;
+        $order->phone_number = $request->phone_number;
+        $order->address = $request->address;
+        $order->email = $request->email;
+        $order->notes = $request->notes;
+        $order->total = $request->total;
+        $order->status = 'settlement';
+        $order->save();
+
+        foreach ($request->detailorders as $detailorder) {
+            $order->menus()->attach(
+                $detailorder['menu_id'],
+                ['qty' => $detailorder['qty']]
+            );
+        }
+
+        return redirect(route('order.index'))->with('success', 'Berhasil tambah order!');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Order  $order
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Order $order)
+    public function show(order $order)
     {
-        //
+        return view('admin.order.show', compact('order'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Order  $order
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Order $order)
+    public function edit(order $order)
     {
-        //
+        return view('admin.order.edit', compact('order'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Order  $order
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Order $order)
+    public function update(Request $request, order $order)
     {
-        //
+        $validated =  $request->validate([
+            'name' => 'required',
+            'date' => 'required|date',
+            'phone_number' => 'required|max:15',
+            'address' => 'required',
+        ]);
+
+        $order->date = $request->date;
+        $order->name = $request->name;
+        $order->phone_number = $request->phone_number;
+        $order->address = $request->address;
+        $order->email = $request->email;
+        $order->notes = $request->notes;
+        $order->total = $request->total;
+        $order->status = 'settlement';
+        $order->update();
+
+        $order->menus()->detach();
+
+        foreach ($request->orderDetails as $detailorder) {
+            $order->menus()->attach(
+                $detailorder['menu_id'],
+                ['qty' => $detailorder['qty']]
+            );
+        }
+
+        return redirect(route('order.index'))->with('success', 'Berhasil update order!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Order  $order
-     * @return \Illuminate\Http\Response
-     */
+    public function done($orderId)
+    {
+        $order = Order::find($orderId);
+        $order->status = "done";
+        $order->update();
+
+        return redirect(route('order.print', $order));
+    }
+
+    public function print(Order $order)
+    {
+        return view('admin.order.print', compact('order'));
+    }
+
     public function destroy(Order $order)
     {
-        //
+        $order->menus()->detach();
+        $order->delete();
+        return redirect(route('order.index'))->with('success', 'Berhasil hapus order!');
     }
 }

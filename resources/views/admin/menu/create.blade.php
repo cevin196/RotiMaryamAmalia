@@ -15,23 +15,23 @@
             <form action="{{route('menu.store')}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <label for="name" class="form-label">Nama</label>
-                <input type="text" name="nama" class="form-control form-group" id="name" placeholder="Contoh: Roti Maryam Coklat">
+                <input type="text" name="name" class="form-control form-group" id="name" placeholder="Contoh: Roti Maryam Coklat">
                 <div class="row">
                     <div class="col-md-6 col-12">
                         <div class="form-group">
-                            <label for="harga" >Harga</label>
-                            <input type="number" name="harga" class="form-control" id="harga" placeholder="0">
+                            <label for="price" >Harga</label>
+                            <input type="number" name="price" class="form-control" id="harga" placeholder="0">
                         </div>
                     </div>
                     <div class="col-md-6 col-12">
                         <div class="form-group">
-                            <label for="gambar">Gambar</label>
-                            <input type="file" name="gambar" id="gambar" class="form-control">
+                            <label for="picture">Gambar</label>
+                            <input type="file" name="picture" id="picture" class="form-control">
                         </div>
                     </div>
                 </div>
-                <label for="deskripsi">Deskripsi</label>
-                <textarea name="deskripsi" id="deskripsi" rows="4" class="form-control mb-3"></textarea>
+                <label for="description">Deskripsi</label>
+                <textarea name="description" id="description" rows="4" class="form-control mb-3"></textarea>
 
                 
 

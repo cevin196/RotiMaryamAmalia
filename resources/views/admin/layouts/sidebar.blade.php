@@ -27,8 +27,15 @@
                     </a>
                 </li>
 
-                <li class="sidebar-item {{str_contains(Route::currentRouteName(),'pesanan')?'active': ''}} ">
-                    <a href="{{route('pesanan.index')}}" class='sidebar-link'>
+                <li class="sidebar-item {{str_contains(Route::currentRouteName(), 'city') ? 'active' : '' }}">
+                    <a href="{{route('city.index')}}" class='sidebar-link'>
+                        <i class="bi bi-building"></i>
+                        <span>Kota</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item {{str_contains(Route::currentRouteName(),'order')?'active': ''}} ">
+                    <a href="{{route('order.index')}}" class='sidebar-link'>
                         <i class="bi bi-clipboard"></i>
                         <span>Pesanan</span>
                     </a>

@@ -10,11 +10,11 @@ class Menu extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nama', 'harga', 'gambar', 'deskripsi', 'status'];
+    protected $fillable = ['name', 'price', 'picture', 'description', 'status'];
 
-    public function pesanans()
+    public function orders()
     {
-        return $this->belongsToMany(Pesanan::class)->withPivot('qty');
+        return $this->belongsToMany(Order::class)->withPivot('qty');
     }
 
     protected function status(): Attribute

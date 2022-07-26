@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\City;
 use App\Models\Menu;
-use App\Models\Pesanan;
+use App\Models\Order;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -45,15 +45,15 @@ class DatabaseSeeder extends Seeder
             [
                 'name' => 'Admin User',
                 'email' => 'admin@mail.com',
-                'tipe' => 1,
-                'telepon' => "08112233",
+                'role' => 1,
+                'phone_number' => "08112233",
                 'password' => bcrypt('password'),
             ],
             [
                 'name' => 'User',
                 'email' => 'user@mail.com',
-                'tipe' => 0,
-                'telepon' => "08112233",
+                'role' => 0,
+                'phone_number' => "08112233",
                 'password' => bcrypt('password'),
                 'city_id' => City::all()->random()->id
             ],
@@ -67,34 +67,34 @@ class DatabaseSeeder extends Seeder
         // Menu::factory(10)->create();
         $menus = [
             [
-                'nama' => 'Roti Maryam Coklat',
-                'harga' => rand(10000, 20000),
-                'gambar' => 'roti1.jpg',
+                'name' => 'Roti Maryam Coklat',
+                'price' => rand(10000, 20000),
+                'picture' => 'roti1.jpg',
             ],
             [
-                'nama' => 'Roti Maryam Madu',
-                'harga' => rand(10000, 20000),
-                'gambar' => 'roti2.jpg',
+                'name' => 'Roti Maryam Madu',
+                'price' => rand(10000, 20000),
+                'picture' => 'roti2.jpg',
             ],
             [
-                'nama' => 'Roti Maryam Keju',
-                'harga' => rand(10000, 20000),
-                'gambar' => 'roti3.jpg',
+                'name' => 'Roti Maryam Keju',
+                'price' => rand(10000, 20000),
+                'picture' => 'roti3.jpg',
             ],
             [
-                'nama' => 'Roti Maryam Greentea',
-                'harga' => rand(10000, 20000),
-                'gambar' => 'roti4.jpg',
+                'name' => 'Roti Maryam Greentea',
+                'price' => rand(10000, 20000),
+                'picture' => 'roti4.jpg',
             ],
             [
-                'nama' => 'Roti Maryam Stroberi',
-                'harga' => rand(10000, 20000),
-                'gambar' => 'roti5.jpg',
+                'name' => 'Roti Maryam Stroberi',
+                'price' => rand(10000, 20000),
+                'picture' => 'roti5.jpg',
             ],
             [
-                'nama' => 'Roti Maryam Kurma',
-                'harga' => rand(10000, 20000),
-                'gambar' => 'roti6.jpg',
+                'name' => 'Roti Maryam Kurma',
+                'price' => rand(10000, 20000),
+                'picture' => 'roti6.jpg',
             ],
         ];
 
@@ -102,12 +102,12 @@ class DatabaseSeeder extends Seeder
             Menu::create($menu);
         }
 
-        Pesanan::factory(5)->create();
+        Order::factory(5)->create();
 
-        foreach (Pesanan::all() as $pesanan) {
+        foreach (Order::all() as $order) {
             $menus = Menu::inRandomOrder()->take(rand(3, 5))->pluck('id');
             foreach ($menus as $menu) {
-                $pesanan->menus()->attach($menu, ['qty' => rand(1, 15), 'harga' => rand(10000, 20000)]);
+                $order->menus()->attach($menu, ['qty' => rand(1, 15)]);
             }
         }
     }

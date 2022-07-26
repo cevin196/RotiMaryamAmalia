@@ -19,7 +19,7 @@
                 <div class="col-md-4 col-12">
                     <div class="form-group">
                         <label for="name" class="form-label">Tipe User</label><br>
-                        <input type="text" class="form-control form-group text-capitalize" value="{{$user->tipe}}" disabled>                        
+                        <input type="text" class="form-control form-group text-capitalize" value="{{$user->role}}" disabled>                        
                     </div>
                 </div>
             </div>
@@ -33,7 +33,7 @@
                 <div class="col-md-6 col-12">
                     <div class="form-group">
                         <label for="telepon" class="form-label">Telepon</label>
-                        <input type="text" name="gambar" id="telepon" class="form-control" value="{{$user->telepon}}" disabled>
+                        <input type="text" name="gambar" id="telepon" class="form-control" value="{{$user->phone_number}}" disabled>
                     </div>
                 </div>
             </div>
@@ -47,7 +47,7 @@
             </div>
 
             <label for="alamat">Alamat</label>
-            <textarea name="alamat" id="alamat" rows="4" class="form-control mb-3" disabled>{{$user->alamat}}</textarea>
+            <textarea name="alamat" id="alamat" rows="4" class="form-control mb-3" disabled>{{$user->address}}</textarea>
 
 
 

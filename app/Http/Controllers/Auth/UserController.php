@@ -42,7 +42,7 @@ class UserController extends Controller
         $validated = $request->validate([
             'name' => 'required',
             'email' => 'required|email',
-            'telepon' => 'required',
+            'phone_number' => 'required',
         ]);
         $tipe = 0;
         if ($request->tipe == "on") {
@@ -51,8 +51,8 @@ class UserController extends Controller
 
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->telepon = $request->telepon;
-        $user->alamat = $request->alamat;
+        $user->phone_number = $request->phone_number;
+        $user->address = $request->address;
         $user->city_id = $request->city;
         $user->tipe = $tipe;
         $user->update();

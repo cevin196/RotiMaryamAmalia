@@ -30,7 +30,7 @@
                 </div>
                 <div class="col-md-8">
                     <h6 class="text-muted font-semibold">Pesanan</h6>
-                    <h6 class="font-extrabold mb-0">{{$pesananCount}}</h6>
+                    <h6 class="font-extrabold mb-0">{{$orderCount}}</h6>
                 </div>
             </div>
         </div>
@@ -47,7 +47,7 @@
                 </div>
                 <div class="col-md-8">
                     <h6 class="text-muted font-semibold">Pesanan Selesai</h6>
-                    <h6 class="font-extrabold mb-0">{{$pesananSelesaiCount}}</h6>
+                    <h6 class="font-extrabold mb-0">{{$completedOrderCount}}</h6>
                 </div>
             </div>
         </div>
@@ -61,7 +61,7 @@
                     <img src="assets/images/faces/1.jpg" alt="Face 1">
                 </div>
                 <div class="ms-3 name">
-                    <h5 class="font-bold text-capitalize">{{Auth::user()->tipe}}</h5>
+                    <h5 class="font-bold text-capitalize">{{Auth::user()->role}}</h5>
                     <h6 class="text-muted mb-0">{{Auth::user()->name}}</h6>
                 </div>
             </div>

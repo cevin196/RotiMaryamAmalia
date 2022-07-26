@@ -14,32 +14,32 @@
             <form action="{{route('menu.update', $menu)}}" method="POST" enctype="multipart/form-data">
                 @csrf @method('PUT')
                 <label for="name" class="form-label">Nama</label>
-                <input type="text" name="nama" class="form-control form-group" id="name" placeholder="Contoh: Roti Maryam Coklat" value="{{$menu->nama}}">
-                @if ($errors->has('nama'))
-                <span class="text-danger">{{$errors->first('nama')}}</span>
+                <input type="text" name="name" class="form-control form-group" id="name" placeholder="Contoh: Roti Maryam Coklat" value="{{$menu->name}}">
+                @if ($errors->has('name'))
+                <span class="text-danger">{{$errors->first('name')}}</span>
                 @endif
                 <div class="row">
                     <div class="col-md-6 col-12">
                         <div class="form-group">
-                            <label for="harga" >Harga</label>
-                            <input type="text" name="harga" class="form-control" id="harga" placeholder="0" value="{{$menu->harga}}">
-                            @if ($errors->has('harga'))
-                            <span class="text-danger">{{$errors->first('harga')}}</span>
+                            <label for="price" >Harga</label>
+                            <input type="text" name="price" class="form-control" id="price" placeholder="0" value="{{$menu->price}}">
+                            @if ($errors->has('price'))
+                            <span class="text-danger">{{$errors->first('price')}}</span>
                             @endif
                         </div>
                     </div>
                     <div class="col-md-6 col-12">
                         <div class="form-group">
-                            <label for="gambar">Gambar</label>
-                            <input type="file" name="gambar" id="gambar" class="form-control" value="{{$menu->gambar}}">
-                            @if ($errors->has('gambar'))
-                            <span class="text-danger">{{$errors->first('gambar')}}</span>
+                            <label for="picture">Gambar</label>
+                            <input type="file" name="picture" id="picture" class="form-control" value="{{$menu->picture}}">
+                            @if ($errors->has('picture'))
+                            <span class="text-danger">{{$errors->first('picture')}}</span>
                             @endif
                         </div>
                     </div>
                 </div>
-                <label for="deskripsi">Deskripsi</label>
-                <textarea name="deskripsi" id="deskripsi" rows="4" class="form-control mb-3">{{$menu->deskripsi}}</textarea>
+                <label for="descripntion">Deskripsi</label>
+                <textarea name="descripntion" id="descripntion" rows="4" class="form-control mb-3">{{$menu->desctiption}}</textarea>
 
                 
 

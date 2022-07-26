@@ -4,82 +4,57 @@ namespace App\Http\Controllers;
 
 use App\Models\City;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class CityController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        $cities = City::all();
+        return view('admin.city.index', compact('cities'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        return view('admin.city.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|unique:cities',
+            'shipping_cost' => 'required'
+        ]);
+
+        City::create($request->only(['name', 'shipping_cost']));
+
+        return redirect(route('city.index'))->with('success', 'Berhasil tambah kota!');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\City  $city
-     * @return \Illuminate\Http\Response
-     */
     public function show(City $city)
     {
-        //
+        return view('admin.city.show', compact('city'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\City  $city
-     * @return \Illuminate\Http\Response
-     */
     public function edit(City $city)
     {
-        //
+        return view('admin.city.edit', compact('city'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\City  $city
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, City $city)
     {
-        //
+        $validated = $request->validate([
+            'name' => ['required', Rule::unique('cities')->ignore($city)],
+            'shipping_cost' => 'required|integer'
+        ]);
+
+        $city->update($request->only(['name', 'shipping_cost']));
+        return redirect(route('city.index'))->with('success', 'Berhasil update kota!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\City  $city
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(City $city)
     {
-        //
+        $city->delete();
+        return redirect(route('city.index'))->with('success', 'Berhasil hapus kota!');
     }
 }

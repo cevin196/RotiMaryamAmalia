@@ -33,11 +33,11 @@
     <section class="checkout spad">
         <div class="container">
             <div class="checkout__form">
-                <form action="{{route('user.pesanan.store')}}" method="POST" id="paymentForm">
+                <form action="{{route('user.order.store')}}" method="POST" id="paymentForm">
                     @csrf
                     <input name="paymentResponse" type="hidden" id="paymentResponse">
                     <input name="inputStatus" type="hidden" id="inputStatus">
-                    <input name="pesanan_id" type="hidden" value="{{$pesanan->id}}">
+                    <input name="order_id" type="hidden" value="{{$order->id}}">
                     <div class="row">
                         <div class="col-lg-7 col-md-6">
                             <h6 class="checkout__title">Billing Details</h6>
@@ -45,7 +45,7 @@
                                 <div class="col-lg-12">
                                     <div class="checkout__input">
                                         <p>Nama<span>*</span></p>
-                                        <input type="text" value="{{$pesanan->nama}}" disabled>
+                                        <input type="text" value="{{$order->name}}" disabled>
                                     </div>
                                 </div>
                             </div>
@@ -53,31 +53,31 @@
                                 <div class="col-lg-12">
                                     <div class="checkout__input">
                                         <p>Kota<span>*</span></p>
-                                        <input type="text" value="{{$pesanan->city->name}}" disabled>
+                                        <input type="text" value="{{$order->city->name}}" disabled>
                                     </div>
                                 </div>
                             </div>
                             <div class="checkout__input">
                                 <p>Alamat<span>*</span></p>
-                                <textarea name="alamat" id="" rows="5" class="form-control" disabled>{{$pesanan->alamat}}</textarea>
+                                <textarea name="alamat" id="" rows="5" class="form-control" disabled>{{$order->address}}</textarea>
                             </div>
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
                                         <p>Telepon<span>*</span></p>
-                                        <input type="text" value="{{$pesanan->telepon}}" disabled>
+                                        <input type="text" value="{{$order->phone_number}}" disabled>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
                                         <p>Email<span>*</span></p>
-                                        <input type="email" value="{{$pesanan->email}}" disabled>
+                                        <input type="email" value="{{$order->email}}" disabled>
                                     </div>
                                 </div>
                             </div>
                             <div class="checkout__input">
                                 <p>Catatan<span>*</span></p>
-                                <input type="text" disabled value="{{$pesanan->catatan}}">
+                                <input type="text" disabled value="{{$order->notes}}">
                             </div>
                         </div>
                         <div class="col-lg-5 col-md-6">
@@ -85,19 +85,19 @@
                                 <h6 class="order__title">Pesanan Anda</h6>
                                 <div class="checkout__order__products">Produk <span>Total</span></div>
                                 <ul class="checkout__total__products">
-                                    @foreach ($pesanan->menus as $pesananMenu)
-                                    <li><samp>{{$loop->index + 1}}</samp> {{$pesananMenu->nama}}({{$pesananMenu->pivot->qty}}) <span>{{rupiah((int)$pesananMenu->pivot->qty * (int) $pesananMenu->harga)}}</span></li>
+                                    @foreach ($order->menus as $orderMenu)
+                                    <li><samp>{{$loop->index + 1}}</samp> {{$orderMenu->name}}({{$orderMenu->pivot->qty}}) <span>{{rupiah((int)$orderMenu->pivot->qty * (int) $orderMenu->price)}}</span></li>
                                     @endforeach
                                 </ul>
                                 <ul class="checkout__order__products">
-                                    <li>Ongkir <span>{{rupiah($pesanan->city->shipping_cost)}}</span></li>
+                                    <li>Ongkir <span>{{rupiah($order->city->shipping_cost)}}</span></li>
                                 </ul>
                                 <ul class="checkout__total__all">
-                                    <li>Total <span>{{rupiah($pesanan->total + $pesanan->city->shipping_cost)}}</span></li>
+                                    <li>Total <span>{{rupiah($order->total + $order->city->shipping_cost)}}</span></li>
                                 </ul>
                                 {{-- <p>Lorem ipsum dolor sit amet, consectetur adip elit, sed do eiusmod tempor incididunt
                                 ut labore et dolore magna aliqua.</p> --}}
-                                @if ($pesanan->status != 'settlement')
+                                @if ($order->status != 'settlement')
                                 <button id="pay-button" class="site-btn">Bayar</button>
                                 @endif
                             </div>
@@ -119,7 +119,7 @@
     payButton.addEventListener('click', function () {
         event.preventDefault();
         // Trigger snap popup. @TODO: Replace TRANSACTION_TOKEN_HERE with your transaction token
-        window.snap.pay('{{$pesanan->snap_token}}', {
+        window.snap.pay('{{$order->snap_token}}', {
             onSuccess: function (result) {
                 alert("Pembayaran Berhasil!");
                 sendRersultForm(result);

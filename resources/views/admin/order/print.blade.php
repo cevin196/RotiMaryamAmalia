@@ -14,17 +14,17 @@
         <tr>
             <td class="col-3">Nomor Pesanan</td>
             <td>:</td>
-            <td>{{$pesanan->nomor_pesanan}}</td>
+            <td>{{$order->order_number}}</td>
         </tr>
         <tr>
             <td class="col-3">Nama</td>
             <td>:</td>
-            <td>{{$pesanan->nama}}</td>
+            <td>{{$order->name}}</td>
         </tr>
         <tr>
             <td class="col-3">Tanggal</td>
             <td>:</td>
-            <td>{{$pesanan->tanggal}}</td>
+            <td>{{$order->date}}</td>
         </tr>
     </table>
 <hr>
@@ -36,12 +36,12 @@
             <th>Sub Total</th>
         </tr>
         
-        @foreach ($pesanan->menus as $detailPesanan)
+        @foreach ($order->menus as $orderDetail)
             <tr>
-                <td>{{$detailPesanan->nama}}</td>
-                <td>{{rupiah($detailPesanan->pivot->harga)}}</td>
-                <td>{{$detailPesanan->pivot->qty}}</td>
-                <td>{{rupiah($detailPesanan->pivot->harga * $detailPesanan->pivot->qty)}}</td>
+                <td>{{$orderDetail->name}}</td>
+                <td>{{rupiah($orderDetail->price)}}</td>
+                <td>{{$orderDetail->pivot->qty}}</td>
+                <td>{{rupiah($orderDetail->price * $orderDetail->pivot->qty)}}</td>
             </tr>
         @endforeach
     </table>

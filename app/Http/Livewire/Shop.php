@@ -7,21 +7,21 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-class Belanja extends Component
+class Shop extends Component
 {
     use WithPagination;
 
     public $cart;
-    public $kataKunci = '';
+    public $searchKey = '';
 
-    public function tambahKeranjang($menuId)
+    public function addToCart($menuId)
     {
         $menu = Menu::find($menuId);
         Cart::add(
             $menu->id,
-            $menu->nama,
+            $menu->name,
             1,
-            $menu->harga,
+            $menu->price,
         );
 
         $this->emit('updateTotal');
@@ -30,8 +30,8 @@ class Belanja extends Component
     public function render()
     {
         $this->cart = Cart::content();
-        $menus = Menu::where('nama', 'like', '%' . $this->kataKunci . '%')->paginate(8);
+        $menus = Menu::where('name', 'like', '%' . $this->searchKey . '%')->paginate(8);
 
-        return view('livewire.belanja', compact('menus'));
+        return view('livewire.shop', compact('menus'));
     }
 }

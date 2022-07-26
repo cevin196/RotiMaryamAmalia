@@ -122,8 +122,8 @@
 
           <div class="form-group first">
             <label for="phone">Phone Number</label>
-            <input name="telepon" type="tel" class="form-control" placeholder="081112233" id="telepon">
-            @error('telepon')
+            <input name="phone_number" type="tel" class="form-control" placeholder="081112233" id="phone_number">
+            @error('phone_number')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
             </span>

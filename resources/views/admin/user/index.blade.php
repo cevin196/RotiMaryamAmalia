@@ -34,8 +34,8 @@
                                     <td class="text-center">{{$loop->index +1}}</td>
                                     <td>{{$user->name}}</td>
                                     <td>{{$user->email}}</td>
-                                    <td>{{$user->telepon}}</td>
-                                    <td>{{$user->tipe}}</td>
+                                    <td>{{$user->phone_number}}</td>
+                                    <td>{{$user->role}}</td>
                                     <td>
                                         <div class="d-flex justify-content-around">
                                             <a href="{{route('user.edit', $user)}}" type="button"><i

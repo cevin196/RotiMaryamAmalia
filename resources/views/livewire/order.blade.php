@@ -10,38 +10,38 @@
             <th class="col-1"></th>
         </thead>
         <tbody>
-            @foreach($detailPesanans as $index => $detailPesanan)
+            @foreach($orderDetails as $index => $orderDetail)
             <tr>
                 <td>
-                    <select name="detailPesanans[{{$index}}][menu_id]" id="selectSearch-{{$index}}" class="form-select"
-                        wire:model="detailPesanans.{{$index}}.menu_id" wire:key="{{ $loop->index }}"
+                    <select name="orderDetails[{{$index}}][menu_id]" id="selectSearch-{{$index}}" class="form-select"
+                        wire:model="orderDetails.{{$index}}.menu_id" wire:key="{{ $loop->index }}"
                         onmouseover="dselect(document.querySelector('#selectSearch-{{$index}}'), {search: true,maxHeight: '360px',size: '',});"
                         value="{{old('detailKonfirmasi[$index][menu_id]')}}" wire:change="change({{$index}})">
                         <option value="">-- Pilih Menu --</option>
                         @foreach($menus as $menu)
-                        <option value="{{$menu->id}}" {{($detailPesanan['menu_id']==$menu->id)?"selected":""}}>
-                            {{$menu->id .' - '.$menu->nama}}
+                        <option value="{{$menu->id}}" {{($orderDetail['menu_id']==$menu->id)?"selected":""}}>
+                            {{$menu->id .' - '.$menu->name}}
                         </option>
                         @endforeach
                     </select>
                 </td>
 
                 <td>
-                    <input type="text" wire:model="detailPesanans.{{$index}}.harga" class="form-control" disabled>
-                    <input type="hidden" name="detailPesanans[{{$index}}][harga]"
-                        wire:model="detailPesanans.{{$index}}.harga" class="form-control">
+                    <input type="text" wire:model="orderDetails.{{$index}}.price" class="form-control" disabled>
+                    <input type="hidden" name="orderDetails[{{$index}}][price]"
+                        wire:model="orderDetails.{{$index}}.price" class="form-control">
                 </td>
 
                 <td>
-                    <input type="number" name="detailPesanans[{{$index}}][qty]"
-                        wire:model="detailPesanans.{{$index}}.qty" class="form-control"
+                    <input type="number" name="orderDetails[{{$index}}][qty]"
+                        wire:model="orderDetails.{{$index}}.qty" class="form-control"
                         wire:change="change({{$index}})">
                 </td>
 
                 <td>
-                    <input type="text" wire:model="detailPesanans.{{$index}}.jumlah" class="form-control" disabled>
-                    <input type="hidden" name="detailPesanans[{{$index}}][jumlah]"
-                        wire:model="detailPesanans.{{$index}}.jumlah" class="form-control">
+                    <input type="text" wire:model="orderDetails.{{$index}}.total" class="form-control" disabled>
+                    <input type="hidden" name="orderDetails[{{$index}}][total]"
+                        wire:model="orderDetails.{{$index}}.total" class="form-control">
                 </td>
 
                 <td>

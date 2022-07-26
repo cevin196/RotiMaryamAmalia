@@ -19,7 +19,7 @@
                             <label for="name" class="form-label">Nama</label>
                             <input type="text" name="name" class="form-control form-group" id="name"
                                 placeholder="Nama ..." value="{{$user->name}}">
-                            @if ($errors->has('nama'))
+                            @if ($errors->has('name'))
                             <span class="text-danger">{{$errors->first('nama')}}</span>
                             @endif
                         </div>

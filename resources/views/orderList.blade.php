@@ -38,31 +38,31 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($pesanans as $pesanan)
+                                @foreach ($orders as $order)
                                 <tr>
                                     <td class="product__cart__item">
                                         <div class="product__cart__item__pic">
                                             <img src="img/shop/cart/cart-1.jpg" alt="">
                                         </div>
                                         <div class="product__cart__item__text">
-                                            <h6>{{$pesanan->tanggal}}</h6>
+                                            <h6>{{$order->date}}</h6>
                                         </div>
                                     </td>
-                                    <td class="cart__price">{{rupiah($pesanan->total + $pesanan->city->shipping_cost)}}</td>
+                                    <td class="cart__price">{{rupiah($order->total + $order->city->shipping_cost)}}</td>
                                     <td class="cart__stock text-center"><span class="badge 
                                         @php
-                                            if($pesanan->status=="settlement"){
+                                            if($order->status=="settlement"){
                                                 echo 'bg-success';
-                                            }elseif ($pesanan->status == "Batal") {
+                                            }elseif ($order->status == "Batal") {
                                                 echo 'bg-danger';
-                                            }elseif ($pesanan->status == 'pending') {
+                                            }elseif ($order->status == 'pending') {
                                                 echo 'bg-warning';
                                             }else {
                                                 echo 'bg-secondary';
                                             }
                                         @endphp
-                                        text-white p-2">{{$pesanan->status}}</span></td>
-                                    <td class="cart__btn"><a href="{{route('pesanan', $pesanan->id)}}" class="primary-btn">Detail</a></td>
+                                        text-white p-2">{{$order->status}}</span></td>
+                                    <td class="cart__btn"><a href="{{route('order', $order->id)}}" class="primary-btn">Detail</a></td>
                                 </tr>
                                 @endforeach
                             </tbody>

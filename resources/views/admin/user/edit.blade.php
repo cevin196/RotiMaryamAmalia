@@ -20,7 +20,7 @@
                     </div>
                     <div class="col-md-6 col-12">
                         <div class="form-group">
-                            <label for="name" class="form-label">Email</label>
+                            <label for="email" class="form-label">Email</label>
                             <input type="text" name="email" class="form-control form-group" id="name" value="{{$user->email}}">
                         </div>
                     </div>
@@ -35,24 +35,22 @@
                                 <option value="{{$city->id}}" {{($user->city->id == $city->id)?'selected':''}}>{{$city->name}}</option>
                                 @endforeach
                             </select>
-                            {{-- <input type="text" name="city" class="form-control form-group" id="city"
-                                value="{{($user->city != "")?$user->city->name:''}}"> --}}
                         </div>
                     </div>
                     <div class="col-md-6 col-12">
                         <div class="form-group">
-                            <label for="telepon" class="form-label">Telepon</label>
-                            <input type="text" name="telepon" name="gambar" id="telepon" class="form-control"
-                                value="{{$user->telepon}}">
+                            <label for="phone_number" class="form-label">Telepon</label>
+                            <input type="text" name="phone_number" name="gambar" id="phone_number" class="form-control"
+                                value="{{$user->phone_number}}">
                         </div>
                     </div>
                 </div>
 
-                <label for="alamat">Alamat</label>
-                <textarea name="alamat" id="alamat" rows="4" class="form-control mb-3">{{$user->alamat}}</textarea>
+                <label for="address">Alamat</label>
+                <textarea name="address" id="address" rows="4" class="form-control mb-3">{{$user->address}}</textarea>
 
                 <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" name="tipe" role="switch" id="flexSwitchCheckChecked" {{($user->tipe == "admin")?"checked":""}}>
+                    <input class="form-check-input" type="checkbox" name="tipe" role="switch" id="flexSwitchCheckChecked" {{($user->role == "Admin")?"checked":""}}>
                     <label class="form-check-label" for="flexSwitchCheckChecked">Admin User</label>
                 </div>
 

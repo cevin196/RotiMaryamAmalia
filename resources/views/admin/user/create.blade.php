@@ -16,24 +16,22 @@
                 @csrf
                 <label for="name" class="form-label">Nama</label>
                 <input type="text" name="nama" class="form-control form-group" id="name" placeholder="Nama Penguna...">
-                <label for="name" class="form-label">Nama</label>
-                <input type="text" name="nama" class="form-control form-group" id="name" placeholder="Nama Penguna...">
                 <div class="row">
                     <div class="col-md-6 col-12">
                         <div class="form-group">
-                            <label for="harga" >Harga</label>
-                            <input type="number" name="harga" class="form-control" id="harga" placeholder="0">
+                            <label for="price" >Harga</label>
+                            <input type="number" name="price" class="form-control" id="price" placeholder="0">
                         </div>
                     </div>
                     <div class="col-md-6 col-12">
                         <div class="form-group">
-                            <label for="gambar">Gambar</label>
-                            <input type="file" name="gambar" id="gambar" class="form-control">
+                            <label for="picture">Gambar</label>
+                            <input type="file" name="picture" id="picture" class="form-control">
                         </div>
                     </div>
                 </div>
-                <label for="deskripsi">Deskripsi</label>
-                <textarea name="deskripsi" id="deskripsi" rows="4" class="form-control mb-3"></textarea>
+                <label for="description">Deskripsi</label>
+                <textarea name="description" id="description" rows="4" class="form-control mb-3"></textarea>
 
                 
 

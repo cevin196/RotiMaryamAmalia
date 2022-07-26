@@ -14,10 +14,10 @@ return new class extends Migration
             $table->string('email')->unique();
             // $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('telepon', 15);
+            $table->string('phone_number', 15);
             $table->foreignId('city_id')->default(1)->constrained();
-            $table->text('alamat')->nullable();
-            $table->tinyInteger('tipe')->default(0);
+            $table->text('address')->nullable();
+            $table->tinyInteger('role')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });

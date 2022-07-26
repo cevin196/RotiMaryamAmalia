@@ -9,9 +9,9 @@ class MenuFactory extends Factory
     public function definition()
     {
         return [
-            'nama' => $this->faker->name(),
-            'harga' => $this->faker->randomNumber(5, true),
-            'deskripsi' => $this->faker->paragraph($nbSentences = 3, $variableNbSentences = true),
+            'name' => $this->faker->name(),
+            'price' => $this->faker->randomNumber(5, true),
+            'description' => $this->faker->paragraph($nbSentences = 3, $variableNbSentences = true),
         ];
     }
 }

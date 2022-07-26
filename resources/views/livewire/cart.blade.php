@@ -19,8 +19,8 @@
                             <tr>
                                 <td class="product__cart__item">
                                     <div class="product__cart__item__pic">
-                                        @if (App\Models\Menu::find($item->id)->gambar)
-                                            <img src="{{asset('menu/' . App\Models\Menu::find($item->id)->gambar)}}" alt="" style="width: 70px; height: 70px">
+                                        @if (App\Models\Menu::find($item->id)->picture)
+                                            <img src="{{asset('menu/' . App\Models\Menu::find($item->id)->picture)}}" alt="" style="width: 70px; height: 70px">
                                         @else
                                             <img src="{{asset('menu/menu-default.png')}}" alt="" style="width: 70px; height: 70px">
                                         @endif
@@ -33,9 +33,9 @@
                                 </td>
                                 <td class="quantity__item">
                                     <div class="quantity">                                        
-                                        <a type="button" wire:click='tambahQty("{{$item->rowId}}")' class="btn btn-lg">+</a>
+                                        <a type="button" wire:click='plus("{{$item->rowId}}")' class="btn btn-lg">+</a>
                                         <span>{{$item->qty}}</span>
-                                        <a wire:click='kurangQty("{{$item->rowId}}")' class="btn btn-lg">-</i></a>
+                                        <a wire:click='minus("{{$item->rowId}}")' class="btn btn-lg">-</i></a>
                                         {{-- <div class="pro-qty">
                                             <input type="text" wire:model='keranjang.{{$index}}.qty'>
                                         </div> --}}
@@ -43,7 +43,7 @@
                                 </td>
                                 <td class="cart__price">{{rupiah($item->price)}}</td>
                                 <td class="cart__price">{{rupiah((int)$item->price * (int) $item->qty)}}</td>
-                                <td class="cart__close"><a type="button" wire:click='hapusItem("{{$item->rowId}}")'><span class="icon_close"></span></a></td>
+                                <td class="cart__close"><a type="button" wire:click='deleteItem("{{$item->rowId}}")'><span class="icon_close"></span></a></td>
                             </tr>
                             @endforeach
                         </tbody>
@@ -52,7 +52,7 @@
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-6">
                         <div class="continue__btn">
-                            <a href="{{route('belanja')}}">KEMBALI KE MENU BELANJA</a>
+                            <a href="{{route('shop')}}">KEMBALI KE MENU BELANJA</a>
                         </div>
                     </div>
                 </div>

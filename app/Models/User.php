@@ -17,9 +17,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'telepon',
-        'alamat',
-        'tipe'
+        'phone_number',
+        'address',
+        'role'
     ];
     protected $hidden = [
         'password',
@@ -30,7 +30,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    protected function tipe(): Attribute
+    protected function role(): Attribute
     {
         return new Attribute(
             get: fn ($value) =>  ["user", "admin"][$value],

@@ -11,7 +11,7 @@
                 <div class="col-lg-12 col-md-7">
                     <div class="shop__option__search">
                         <form>
-                            <input type="text" placeholder="Cari Menu..." wire:model='kataKunci'>
+                            <input type="text" placeholder="Cari Menu..." wire:model='searchKey'>
                             <button type="submit"><i class="fa fa-search"></i></button>
                         </form>
                     </div>
@@ -21,13 +21,13 @@
         <div class="row">
             
             @foreach ($menus as $menu)
-            <form wire:submit.prevent='tambahKeranjang({{$menu->id}})' class="col-lg-3 col-md-6 col-sm-6">
+            <form wire:submit.prevent='addToCart({{$menu->id}})' class="col-lg-3 col-md-6 col-sm-6">
                 @csrf
                     {{-- <input type="hidden" name="menu_id" value="{{$menu->id}}"> --}}
                     <div class="product__item">
                         <div class="product__item__pic" 
                         style="
-                            background-image: url({{($menu->gambar)?asset('menu/' . $menu->gambar):'menu/menu-default.png'}});
+                            background-image: url({{($menu->picture)?asset('menu/' . $menu->picture):'menu/menu-default.png'}});
                             background-repeat: no-repeat;
                             background-size: cover;
                             background-position: top center;" wire:key="lang{{$loop->index}}">
@@ -36,8 +36,8 @@
                             </div>
                         </div>
                         <div class="product__item__text">
-                            <h6><a href="#">{{$menu->nama}}</a></h6>
-                            <div class="product__item__price">{{rupiah($menu->harga)}}</div>
+                            <h6><a href="#">{{$menu->name}}</a></h6>
+                            <div class="product__item__price">{{rupiah($menu->price)}}</div>
                             <div class="cart_add">
                                 @if ($cart->where('id', $menu->id)->count())
                                     <a href="#">Sudah di Keranjang</a>

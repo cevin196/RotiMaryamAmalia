@@ -37,7 +37,7 @@
                             <div class="col-lg-12">
                                 <div class="checkout__input">
                                     <p>Nama<span>*</span></p>
-                                    <input name="nama" type="text" value="{{Auth::user()->name}}">
+                                    <input name="name" type="text" value="{{Auth::user()->name}}">
                                     @error('nama')
                                     <span class="text-danger text-sm">
                                         {{$message}}
@@ -62,8 +62,8 @@
                         
                         <div class="checkout__input">
                             <p>Alamat<span>*</span></p>
-                            <textarea name="alamat" id="" rows="5"
-                                class="form-control">{{Auth::user()->alamat}}</textarea>
+                            <textarea name="address" id="" rows="5"
+                                class="form-control">{{Auth::user()->address}}</textarea>
                                 @error('alamat')
                                     <span class="text-danger text-sm">
                                         {{ $message }}
@@ -74,7 +74,7 @@
                             <div class="col-lg-6">
                                 <div class="checkout__input">
                                     <p>Telepon<span>*</span></p>
-                                    <input name="telepon" type="text" value="{{Auth::user()->telepon}}">
+                                    <input name="phone_number" type="text" value="{{Auth::user()->phone_number}}">
                                     @error('telepon')
                                     <span class="text-danger text-sm">
                                         {{ $message }}
@@ -96,7 +96,7 @@
                         </div>
                         <div class="checkout__input">
                             <p>Catatan<span>*</span></p>
-                            <input name="catatan" type="text" placeholder="Catatan tambahan untuk pesanan anda">
+                            <input name="notes" type="text" placeholder="Catatan tambahan untuk pesanan anda">
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6">
