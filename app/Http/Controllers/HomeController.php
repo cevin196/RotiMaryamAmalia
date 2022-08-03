@@ -20,10 +20,10 @@ class HomeController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except('dashboard');
     }
 
-    public function index()
+    public function dashboard()
     {
         $menus = Menu::all();
         return view('dashboard', compact('menus'));

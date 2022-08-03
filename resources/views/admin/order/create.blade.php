@@ -20,9 +20,9 @@
         <div class="card-body">
             <form action="{{route('order.store')}}" method="POST">
                 @csrf
-                <div class="row">
-                    <div class="col-8 mb-2">
-                        <label for="name" class="form-label">Nama</label>
+                <div class="row gy-2 mb-3">
+                    <div class="col-8 ">
+                        <label for="name" class="">Nama</label>
                         <input type="text" name="name" class="form-control" id="name" placeholder="Contoh: Roti Maryam Coklat" value="{{old('name')}}">
                         @error('name')
                             <span class="text-danger">
@@ -31,7 +31,7 @@
                         @enderror
                     </div>
                     <div class="col-4 mb-2">
-                        <label for="date" class="form-label">Tanggal</label>
+                        <label for="date" class="">Tanggal</label>
                         <input type="date" name="date" class="form-control" id="date" value="{{Carbon\Carbon::now()->format('Y-m-d')}}">
                         @error('date')
                             <span class="text-danger">
@@ -40,8 +40,8 @@
                         @enderror
                     </div>
 
-                    <div class="col-6 mb-2">
-                        <label for="phone_number" class="form-label">Telepon</label>
+                    <div class="col-4">
+                        <label for="phone_number" class="">Telepon</label>
                         <input type="text" name="phone_number" class="form-control" id="phone_number" placeholder="Contoh: 08112233" value="{{old('phone_number')}}">
                         @error('phone_number')
                             <span class="text-danger">
@@ -49,8 +49,23 @@
                             </span>
                         @enderror
                     </div>
-                    <div class="col-6 mb-2">
-                        <label for="email" class="form-label">Email</label>
+                    <div class="col-4">
+                        <label for="city" class="">Kota</label>
+                        <select name="city_id" id="city" class="form-control">
+                            <option value="" disabled selected>-- Pilih Kota --</option>
+                            @foreach ($cities as $city)
+                                <option value="{{$city->id}}">{{$city->name}}</option>
+                            @endforeach
+                        </select>
+                        @error('city')
+                            <span class="text-danger">
+                                {{ $message }}
+                            </span>
+                        @enderror
+                    </div>
+
+                    <div class="col-4">
+                        <label for="email" class="">Email</label>
                         <input type="email" name="email" class="form-control" id="email" value="{{ old('email')}}">
                         @error('email')
                             <span class="text-danger">
@@ -59,18 +74,21 @@
                         @enderror
                     </div>
 
-                    <div class="col-12 mb-2">
-                        <label for="notes" class="form-label">Catatan</label>
+                    <div class="col-12">
+                        <label for="address">Alamat</label>
+                        <textarea name="address" id="address" rows="4" class="form-control"></textarea>
+                        @error('address')
+                            <span class="text-danger">
+                                {{ $message }}
+                            </span>
+                        @enderror
+                    </div>
+
+                    <div class="col-12">
+                        <label for="notes" class="">Catatan</label>
                         <input type="text" name="notes" class="form-control" id="notes" value="{{ old('notes')}}" placeholder="Catatan pesanan (boleh kosong)">
-                    </div>                    
+                    </div>    
                 </div>
-                <label for="address">Alamat</label>
-                <textarea name="address" id="address" rows="4" class="form-control mb-3"></textarea>
-                @error('address')
-                    <span class="text-danger">
-                        {{ $message }}
-                    </span>
-                @enderror
 
                 @livewire('order')
 

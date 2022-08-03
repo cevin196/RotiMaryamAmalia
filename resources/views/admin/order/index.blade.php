@@ -11,7 +11,7 @@
 <div class="col-12">
     <div class="card">
         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-            <h5 class="col-3">Tabel Menu</h5>
+            <h5 class="col-3">Tabel Pesanan</h5>
             <a href="{{route('order.create')}}" class="btn btn-primary">Tambah</a>
         </div>
         <div class="card-body">

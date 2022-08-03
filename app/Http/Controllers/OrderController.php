@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\City;
 use App\Models\Menu;
 use App\Models\Order;
 use Carbon\Carbon;
@@ -25,7 +26,8 @@ class OrderController extends Controller
     public function create()
     {
         $menus = Menu::where('status', 1)->get();
-        return view('admin.order.create', compact('menus'));
+        $cities = City::all();
+        return view('admin.order.create', compact('menus', 'cities'));
     }
 
     public function store(Request $request)
@@ -40,11 +42,12 @@ class OrderController extends Controller
         $order = new order;
         do {
             $refrence_id = mt_rand(1000000000, 9999999999);
-        } while (Order::where('nomor_order', $refrence_id)->exists());
-        $order->nomor_order = $refrence_id;
+        } while (Order::where('order_number', $refrence_id)->exists());
+        $order->order_number = $refrence_id;
         $order->date = $request->date;
         $order->name = $request->name;
         $order->phone_number = $request->phone_number;
+        $order->city_id = $request->city_id;
         $order->address = $request->address;
         $order->email = $request->email;
         $order->notes = $request->notes;
@@ -52,10 +55,10 @@ class OrderController extends Controller
         $order->status = 'settlement';
         $order->save();
 
-        foreach ($request->detailorders as $detailorder) {
+        foreach ($request->orderDetails as $orderDetail) {
             $order->menus()->attach(
-                $detailorder['menu_id'],
-                ['qty' => $detailorder['qty']]
+                $orderDetail['menu_id'],
+                ['qty' => $orderDetail['qty']]
             );
         }
 

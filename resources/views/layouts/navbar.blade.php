@@ -1,7 +1,7 @@
 <nav class="header__menu mobile-menu">
     <ul>
         <li class="{{(Route::currentRouteName()=='dashboard')?'active':''}}"><a href="{{route('dashboard')}}">Dashboard</a></li>
-        <li><a href="{{route('tentang-kami')}}">Tentang Kami</a></li>
+        <li><a href="{{route('about')}}">Tentang Kami</a></li>
         <li 
         @if (Route::currentRouteName()=='shop'||Route::currentRouteName()=='user.order'||Route::currentRouteName()=='cart')
             class="active"

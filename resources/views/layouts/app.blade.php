@@ -3,8 +3,9 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="Cake Template">
-    <meta name="keywords" content="Cake, unica, creative, html">
+    <meta name="title" content="Roti Maryam Amalia">
+    <meta name="description" content="Toko roti penyedia roti maryam (canai) berkualitas dengan harga yang terjangkau">
+    <meta name="keywords" content="Roti, Maryam, Canai, Makanan Penutup, Cemilan, Amalia Food, Yogyakarta">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Roti Maryam Amalia</title>
@@ -24,9 +25,9 @@
 
 <body>
     @include('includes.toast')
-    {{-- <div id="preloder">
+    <div id="preloder">
         <div class="loader"></div>
-    </div> --}}
+    </div>
 
     <!-- Offcanvas Menu Begin -->
     <div class="offcanvas-menu-overlay"></div>

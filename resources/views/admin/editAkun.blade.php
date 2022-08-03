@@ -10,7 +10,7 @@
             <h5 class="col-3">Edit Akun</h5>
         </div>
         <div class="card-body">
-            <form action="{{route('user.update', $user)}}" method="POST">
+            <form action="{{route('admin.updateAkun', $user)}}" method="POST">
                 @csrf @method('PUT')
 
                 <div class="row">
@@ -19,9 +19,11 @@
                             <label for="name" class="form-label">Nama</label>
                             <input type="text" name="name" class="form-control form-group" id="name"
                                 placeholder="Nama ..." value="{{$user->name}}">
-                            @if ($errors->has('name'))
-                            <span class="text-danger">{{$errors->first('nama')}}</span>
-                            @endif
+                                @error('name')
+                                    <span class="text-danger">
+                                        {{ $message }}
+                                    </span>
+                                @enderror
                         </div>
                     </div>
                     <div class="col-md-6 col-12">
@@ -29,9 +31,11 @@
                             <label for="email" class="form-label">Email</label>
                             <input type="text" name="email" id="email" class="form-control form-group"
                                 value="{{$user->email}}">
-                            @if ($errors->has('email'))
-                            <span class="text-danger">{{$errors->first('email')}}</span>
-                            @endif
+                            @error('email')
+                                <span class="text-danger">
+                                    {{ $message }}
+                                </span>
+                            @enderror                            
                         </div>
                     </div>
                 </div>
